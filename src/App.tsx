@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div className="wrapper" style={{width: "100vw", height: "100vh", background: "gray", display: "flex"}}>
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
-              <p>btn</p>
+              <button>BUTTON</button>
               <p>btn</p>
               <p>btn</p>
               <p>btn</p>
