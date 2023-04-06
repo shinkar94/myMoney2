@@ -17,6 +17,7 @@ function App() {
               <p>btn123</p>
               <p>btn</p>
               <p>btn</p>
+              <p>My button</p>
           </div>
           <div className="contentWrapper" style={{width: "80%", background: "gray"}}>
               <div className="header" style={{display:"flex", justifyContent: "space-between", background: "green"}}>
@@ -56,10 +57,8 @@ function App() {
                           <div className="block">asdfsadf</div>
                       </div>
                   </div>
-
               </div>
           </div>
-
       </div>
     </div>
   )
