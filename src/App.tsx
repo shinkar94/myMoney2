@@ -15,6 +15,8 @@ function App() {
               <p>btn</p>
               <p>btn</p>
               <p>btn</p>
+              <p>btn</p>
+              <p>btn</p>
           </div>
           <div className="contentWrapper" style={{width: "80%", background: "gray"}}>
               <div className="header" style={{display:"flex", justifyContent: "space-between", background: "green"}}>
