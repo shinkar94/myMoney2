@@ -37,7 +37,7 @@ function App() {
                       </div>
                       <div className="JobApplication">
                           <img src="" alt=""/>
-                          <h3>120+</h3>
+                          <h3>1120+</h3>
                           <p>Description</p>
                       </div>
                       <div className="JobApplication">
