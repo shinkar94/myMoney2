@@ -8,11 +8,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className="wrapper" style={{width: "92vw", height: "100vh", background: "gray", display: "flex"}}>
+      <div className="wrapper" style={{width: "100vw", height: "100vh", background: "gray", display: "flex"}}>
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
               <p>btn</p>
               <p>btn</p>
               <p>btn</p>
+              <p>btn</p>
+              <p>btn123</p>
               <p>btn</p>
               <p>btn</p>
           </div>
@@ -35,7 +37,7 @@ function App() {
                       </div>
                       <div className="JobApplication">
                           <img src="" alt=""/>
-                          <h3>1120+</h3>
+                          <h3>120+</h3>
                           <p>Description</p>
                       </div>
                       <div className="JobApplication">
