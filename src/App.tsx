@@ -3,21 +3,18 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-export const App = () => {
+function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <div className="wrapper" style={{width: "100vw", height: "100vh", background: "gray", display: "flex"}}>
+      <div className="wrapper" style={{width: "92vw", height: "100vh", background: "gray", display: "flex"}}>
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
-              <button>BUTTON</button>
               <p>btn</p>
               <p>btn</p>
               <p>btn</p>
-              <p>btn123</p>
               <p>btn</p>
               <p>btn</p>
-              <p>My button</p>
           </div>
           <div className="contentWrapper" style={{width: "80%", background: "gray"}}>
               <div className="header" style={{display:"flex", justifyContent: "space-between", background: "green"}}>
@@ -38,7 +35,7 @@ export const App = () => {
                       </div>
                       <div className="JobApplication">
                           <img src="" alt=""/>
-                          <h3>120+</h3>
+                          <h3>1120+</h3>
                           <p>Description</p>
                       </div>
                       <div className="JobApplication">
@@ -57,9 +54,13 @@ export const App = () => {
                           <div className="block">asdfsadf</div>
                       </div>
                   </div>
+
               </div>
           </div>
+
       </div>
     </div>
   )
 }
+
+export default App
