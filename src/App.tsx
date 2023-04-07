@@ -40,6 +40,7 @@ function App() {
                           <img src="" alt=""/>
                           <h3>1120+</h3>
                           <p>Description</p>
+                          <button>Новая кнопка!</button>
                       </div>
                       <div className="JobApplication">
                           <img src="" alt=""/>
