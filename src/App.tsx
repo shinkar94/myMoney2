@@ -11,10 +11,6 @@ function App() {
       <div className="wrapper" style={{width: "92vw", height: "100vh", background: "gray", display: "flex"}}>
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
               <p>btn</p>
-              <p>btn</p>
-              <p>btn</p>
-              <p>btn</p>
-              <p>btn</p>
           </div>
           <div className="contentWrapper" style={{width: "80%", background: "gray"}}>
               <div className="header" style={{display:"flex", justifyContent: "space-between", background: "green"}}>
