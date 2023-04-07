@@ -12,7 +12,7 @@ function App() {
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
               <p>btn</p>
               <p>btn</p>
-              <p>btn</p>
+
               <p>btn</p>
               <p>btn</p>
           </div>
