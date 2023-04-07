@@ -12,7 +12,7 @@ function App() {
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
               <p>btn</p>
               <p>btn</p>
-              <p>btn</p>
+
               <p>btn</p>
               <p>btn</p>
               <p>btn</p>
@@ -55,6 +55,7 @@ function App() {
                       <div className="bottomRight" style={{background: "yellowgreen"}}>
                           <div className="block">asdfsadf</div>
                           <div className="block">asdfsadf</div>
+                          <div className="block">fdsfsdfsdsdfsdfsdf</div>
                       </div>
                   </div>
 
