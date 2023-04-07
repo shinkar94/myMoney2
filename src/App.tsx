@@ -12,12 +12,12 @@ function App() {
           <div className="sideBar" style={{width: "20%", background: "brown"}}>
               <p>btn</p>
               <p>btn</p>
-
               <p>btn</p>
               <p>btn</p>
               <p>btn</p>
-              <p></p>
-
+              <p>btn</p>
+              <p>btn</p>
+              <p>btn</p>
           </div>
           <div className="contentWrapper" style={{width: "80%", background: "gray"}}>
               <div className="header" style={{display:"flex", justifyContent: "space-between", background: "green"}}>
@@ -55,7 +55,6 @@ function App() {
                       <div className="bottomRight" style={{background: "yellowgreen"}}>
                           <div className="block">asdfsadf</div>
                           <div className="block">asdfsadf</div>
-                          <div className="block">fdsfsdfsdsdfsdfsdf</div>
                       </div>
                   </div>
 
