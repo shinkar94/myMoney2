@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
-
+import incomeIcon from './../../../public/img/income.svg'
+import outcomeIcon from './../../../public/img/outcome.svg'
+import pigIcon from './../../../public/img/pig.svg'
+import walletIcon from './../../../public/img/wallet.svg'
+import {HomePage} from "./Main/Main";
 type ContentType = {
     totalIncome: number
     totalOutcome: number
@@ -11,44 +15,38 @@ export const Content: React.FC<ContentType> = ({totalIncome, totalOutcome}) => {
         <StContent>
             <TopAnalyticsCard>
                 <div className="JobApplication">
-                    <img src="" alt="img"/>
+                    <img src={incomeIcon} alt="img"/>
                     <div className="descriptions">
                         <h3>{totalIncome - totalOutcome}</h3>
                         <p>Balance</p>
                     </div>
                 </div>
                 <div className="JobApplication">
-                    <img src="" alt="img"/>
+                    <img src={outcomeIcon} alt="img"/>
                     <div className="descriptions">
                         <h3>{totalIncome}</h3>
                         <p>income</p>
                     </div>
                 </div>
                 <div className="JobApplication">
-                    <img src="" alt="img"/>
+                    <img src={walletIcon} alt="img"/>
                     <div className="descriptions">
                         <h3>{totalOutcome}</h3>
                         <p>outcome</p>
                     </div>
                 </div>
                 <div className="JobApplication">
-                    <img src="#" alt="img"/>
+                    <img src={pigIcon} alt="img"/>
                     <div className="descriptions">
                         <h3>10</h3>
                         <p>zanachka</p>
                     </div>
                 </div>
             </TopAnalyticsCard>
-            <div className="bottomContent">
-                <div className="bottomLeft" style={{background: "darkred"}}>
-                    <div className="block">asdfsadf</div>
-                    <div className="block">asdfasdf</div>
-                </div>
-                <div className="bottomRight" style={{background: "yellowgreen"}}>
-                    <div className="block">asdfsadf</div>
-                    <div className="block">asdfsadf</div>
-                </div>
-            </div>
+            <Main>
+                {/*тут route*/}
+                <HomePage />
+            </Main>
 
         </StContent>
     );
@@ -60,6 +58,8 @@ const StContent = styled.div`
 const TopAnalyticsCard = styled.div`
   color: white;
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   justify-content: space-around;
   padding: 20px 0;
 
@@ -77,7 +77,13 @@ const TopAnalyticsCard = styled.div`
         margin: 0;
       }
     }
+    & img{
+      width: 40px;
+    }
   }
   
+`
+const Main = styled.div`
+
 `
 

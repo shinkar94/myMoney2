@@ -15,6 +15,9 @@ export type ItemType =
         type: string
         description: string
         category: string
+        date: string
+        name: string
+
     };
 
 
@@ -23,12 +26,12 @@ function App() {
     const outcome = 'outcome'
     const [operations, setOperations] = useState<OperationsType>({
         [income]: [
-            {id: v1(), value: 12500, type: "income", description: "sdfsdf", category: "sdfsdf"},
-            {id: v1(), value: 12700, type: "income", description: "sdfsdf", category: "sdfsdf"}
+            {id: v1(),date: "14-04-2023", name: "", value: 12500, type: "income", description: "sdfsdf", category: "sdfsdf"},
+            {id: v1(),date: "14-04-2023", name: "", value: 12700, type: "income", description: "sdfsdf", category: "sdfsdf"}
         ],
         [outcome]: [
-            {id: v1(), value: 200, type: "outcome", description: "sdfsdf", category: "sdfsdfsdf"},
-            {id: v1(), value: 200, type: "outcome", description: "sdfsdf", category: "sdfsdfsdf"}
+            {id: v1(),date: "14-04-2023", name: "", value: 200, type: "outcome", description: "sdfsdf", category: "sdfsdfsdf"},
+            {id: v1(),date: "14-04-2023", name: "", value: 200, type: "outcome", description: "sdfsdf", category: "sdfsdfsdf"}
         ],
     })
 
@@ -39,8 +42,8 @@ function App() {
     }
     return (
         <div className="App">
-            <div className="wrapper" style={{width: "92vw", height: "100vh", background: "gray", display: "flex"}}>
-                <div className="sideBar" style={{width: "20%", background: "brown"}}>
+            <div className="wrapper" style={{width: "100vw", height: "100vh", background: "gray", display: "flex"}}>
+                <div className="sideBar" style={{width: "20vw", background: "brown"}}>
                     <p>btn</p>
                     <p>btn</p>
                     <p>btn</p>
@@ -49,13 +52,10 @@ function App() {
                     <p>btn</p>
                     <p>btn</p>
                     <p>btn</p>
+                    <input type="date"/>
                 </div>
-                <div className="contentWrapper" style={{width: "80%", background: "gray"}}>
-                    <div className="header"
-                         style={{display: "flex", justifyContent: "space-between", background: "green"}}>
-                        <p>logo</p>
-                        <button>send</button>
-                    </div>
+                <div className="contentWrapper" style={{width: "80vw"}}>
+                    <button style={{position: "absolute", bottom: "10px", right: "10px", width: "80px", height: "80px", borderRadius: "50%", color: "white", background: "red"}}>+</button>
                     <Content totalIncome={sum(income)} totalOutcome={sum(outcome)}/>
                 </div>
 
