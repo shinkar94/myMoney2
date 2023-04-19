@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
-import incomeIcon from './../../../public/img/income.svg'
-import outcomeIcon from './../../../public/img/outcome.svg'
-import pigIcon from './../../../public/img/pig.svg'
-import walletIcon from './../../../public/img/wallet.svg'
+import incomeIcon from '../../img/income.svg'
+import outcomeIcon from '../../img/outcome.svg'
+import pigIcon from '../../img/pig.svg'
+import walletIcon from '../../img/wallet.svg'
 import {HomePage} from "./Main/Main";
 type ContentType = {
     totalIncome: number
