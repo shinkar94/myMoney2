@@ -17,7 +17,6 @@ export type ItemType =
         category: string
         date: string
         name: string
-
     };
 
 
@@ -34,7 +33,6 @@ function App() {
             {id: v1(),date: "14-04-2023", name: "", value: 200, type: "outcome", description: "sdfsdf", category: "sdfsdfsdf"}
         ],
     })
-
     const sum = (idOperations: string) => {
         return operations[idOperations].reduce((acc, el) => {
             return acc + el.value
@@ -56,7 +54,7 @@ function App() {
                 </div>
                 <div className="contentWrapper" style={{width: "80vw"}}>
                     <button style={{position: "absolute", bottom: "10px", right: "10px", width: "80px", height: "80px", borderRadius: "50%", color: "white", background: "red"}}>+</button>
-                    <Content totalIncome={sum(income)} totalOutcome={sum(outcome)}/>
+                    <Content totalIncome={sum(income)} totalOutcome={sum(outcome)} expenses={operations[outcome]}/>
                 </div>
 
             </div>
