@@ -5,12 +5,15 @@ import outcomeIcon from '../../img/outcome.svg'
 import pigIcon from '../../img/pig.svg'
 import walletIcon from '../../img/wallet.svg'
 import {HomePage} from "./Main/Main";
+import {ItemType} from '../../App';
+
 type ContentType = {
     totalIncome: number
     totalOutcome: number
+    expenses: ItemType[]
 }
 
-export const Content: React.FC<ContentType> = ({totalIncome, totalOutcome}) => {
+export const Content: React.FC<ContentType> = ({totalIncome, totalOutcome,expenses}) => {
     return (
         <StContent>
             <TopAnalyticsCard>
@@ -45,7 +48,7 @@ export const Content: React.FC<ContentType> = ({totalIncome, totalOutcome}) => {
             </TopAnalyticsCard>
             <Main>
                 {/*тут route*/}
-                <HomePage />
+                <HomePage expenses={expenses} totalOutcome={totalOutcome}/>
             </Main>
 
         </StContent>
