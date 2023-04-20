@@ -5,7 +5,9 @@ import outcomeIcon from '../../img/outcome.svg'
 import pigIcon from '../../img/pig.svg'
 import walletIcon from '../../img/wallet.svg'
 import {HomePage} from "./Main/Main";
-import {ItemType} from '../../App';
+
+import {JobApplication} from "./JobApplication/JobApplication";
+import {ItemType} from "../../Reducer/allStateReducer";
 
 type ContentType = {
     totalIncome: number
@@ -13,38 +15,15 @@ type ContentType = {
     expenses: ItemType[]
 }
 
-export const Content: React.FC<ContentType> = ({totalIncome, totalOutcome,expenses}) => {
+export const Content: React.FC<ContentType> = (props) => {
+    const {totalIncome, totalOutcome,expenses} = props
     return (
         <StContent>
             <TopAnalyticsCard>
-                <div className="JobApplication">
-                    <img src={incomeIcon} alt="img"/>
-                    <div className="descriptions">
-                        <h3>{totalIncome - totalOutcome}</h3>
-                        <p>Balance</p>
-                    </div>
-                </div>
-                <div className="JobApplication">
-                    <img src={outcomeIcon} alt="img"/>
-                    <div className="descriptions">
-                        <h3>{totalIncome}</h3>
-                        <p>income</p>
-                    </div>
-                </div>
-                <div className="JobApplication">
-                    <img src={walletIcon} alt="img"/>
-                    <div className="descriptions">
-                        <h3>{totalOutcome}</h3>
-                        <p>outcome</p>
-                    </div>
-                </div>
-                <div className="JobApplication">
-                    <img src={pigIcon} alt="img"/>
-                    <div className="descriptions">
-                        <h3>10</h3>
-                        <p>zanachka</p>
-                    </div>
-                </div>
+                <JobApplication img={walletIcon} value={totalIncome - totalOutcome} name={"Balance"}/>
+                <JobApplication img={incomeIcon} value={totalIncome} name={"income"}/>
+                <JobApplication img={outcomeIcon} value={totalOutcome} name={"outcome"}/>
+                <JobApplication img={pigIcon} value={10} name={"zanachka"}/>
             </TopAnalyticsCard>
             <Main>
                 {/*тут route*/}
@@ -65,26 +44,6 @@ const TopAnalyticsCard = styled.div`
   gap: 10px;
   justify-content: space-around;
   padding: 20px 0;
-
-  .JobApplication {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 300px;
-    height: 100px;
-    background: #39394B;
-    border-radius: 10px;
-    .descriptions{
-      p, h3{
-        margin: 0;
-      }
-    }
-    & img{
-      width: 40px;
-    }
-  }
-  
 `
 const Main = styled.div`
 

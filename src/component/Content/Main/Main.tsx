@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
-import {ItemType} from '../../../App';
+
 import Chart from 'chart.js/auto';
+import {ItemType} from "../../../Reducer/allStateReducer";
 
 
 type HomePageType = {
@@ -10,39 +11,6 @@ type HomePageType = {
 }
 
 export const HomePage: React.FC<HomePageType> = ({totalOutcome, expenses}) => {
-
-    // const expenseAnalytics: ItemType[] = expenses.reduce((acc: ItemType[], { category, value, ...rest }) => {
-    //     const categoryIndex = acc.findIndex(item => item.category === category);
-    //     if (categoryIndex !== -1) {
-    //         acc[categoryIndex].value += value;
-    //     } else {
-    //         acc.push({ category, value, ...rest });
-    //     }
-    //     return acc;
-    // }, []);
-    //
-    // const expensePercentages = expenseAnalytics.map(expense => ({
-    //     category: expense.category,
-    //     percentage: (expense.value / totalOutcome) * 100,
-    // }));
-    //
-    // const analytics = expensePercentages.map((expense, index) => {
-    //
-    //     const styleAnalytics = {
-    //         height: '14px',
-    //         backgroundColor: '#6476ed',
-    //         width: `${expense.percentage}%`,
-    //         borderRadius: '7px'
-    //     }
-    //     return (
-    //         <div key={expense.category} >
-    //             <span>{expense.category}: </span>
-    //             <span>{expense.percentage.toFixed(2)}%</span>
-    //             <div style={styleAnalytics}></div>
-    //         </div>
-    //     )
-    // })
-
     const expenseAnalytics: ItemType[] = expenses
         .reduce((acc: ItemType[], {category, value, ...rest}) => {
         const categoryIndex = acc.findIndex(

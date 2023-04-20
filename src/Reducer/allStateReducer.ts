@@ -1,9 +1,22 @@
 import React from 'react';
 import {v1} from "uuid";
-import {OperationsType} from "../App";
 
-const income = 'income'
-const outcome = 'outcome'
+export type OperationsType = {
+    [key: string]: ItemType[]
+}
+export type ItemType =
+    {
+        id: string
+        value: number
+        type: string
+        description: string
+        category: string
+        date: string
+        name: string
+    };
+
+export const income = 'income'
+export const outcome = 'outcome'
 const initialState: OperationsType = {
     [income]: [
         {
@@ -47,25 +60,24 @@ const initialState: OperationsType = {
     ],
 }
 
-export const allStateReducer = (state: OperationsType = initialState, action: SumACType) => {
+export const allStateReducer = (state: OperationsType = initialState, action: any):OperationsType => {
 switch (action.type) {
-    case "SUM": {
-        return state[action.payload.idOperations].reduce((acc, el) => {
-            return acc + el.value
-        }, 0)
-    }default: return state
+    case "XXX": {
+        return state
+    }
+    default: return state
 }
 
 }
 
 
-type SumACType = ReturnType<typeof sumAC>
-
-export const sumAC = (idOperations: string)=> {
-    return {
-        type: "SUM",
-        payload: {
-            idOperations
-        }
-    }as const
-}
+// type SumACType = ReturnType<typeof sumAC>
+//
+// export const sumAC = (idOperations: string)=> {
+//     return {
+//         type: "XXX",
+//         payload: {
+//             idOperations
+//         }
+//     }as const
+// }
