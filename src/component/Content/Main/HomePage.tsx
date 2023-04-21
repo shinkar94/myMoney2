@@ -2,27 +2,27 @@ import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import Chart from 'chart.js/auto';
-import {ItemType} from "../../../Reducer/allStateReducer";
+import {OperationsType} from "../../../Reducer/allStateReducer";
 
 
 type HomePageType = {
     totalOutcome: number
-    expenses: ItemType[]
+    state: OperationsType[]
 }
 
-export const HomePage: React.FC<HomePageType> = ({totalOutcome, expenses}) => {
-    const expenseAnalytics: ItemType[] = expenses
-        .reduce((acc: ItemType[], {category, value, ...rest}) => {
-        const categoryIndex = acc.findIndex(
-            (item) => item.category === category
-        );
-        if (categoryIndex !== -1) {
-            acc[categoryIndex].value += value;
-        } else {
-            acc.push({category, value, ...rest});
-        }
-        return acc;
-    }, []);
+export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
+    const expenseAnalytics: OperationsType[] = state.filter(item => item.type === 'outcome')
+        .reduce((acc: OperationsType[], {category, value, ...rest}) => {
+            const categoryIndex = acc.findIndex(
+                (item) => item.category === category
+            );
+            if (categoryIndex !== -1) {
+                acc[categoryIndex].value += value;
+            } else {
+                acc.push({category, value, ...rest});
+            }
+            return acc;
+        }, []);
     const expensePercentages = expenseAnalytics.map((expense) => ({
         category: expense.category,
         percentage: ((expense.value / totalOutcome) * 100).toFixed(2),
@@ -105,13 +105,17 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, expenses}) => {
                         <div className="th">category</div>
                     </div>
                     <div className="tbody">
-                        <div className="tr" style={{display: 'flex', gap: '10px'}}>
-                            <p>date</p>
-                            <p>name</p>
-                            <p>sum</p>
-                            <p>type</p>
-                            <p>category</p>
-                        </div>
+                        {state.map(item => {
+                            return (
+                                <div className="tr" style={{display: 'flex', gap: '10px'}}>
+                                    <p>{item.date}</p>
+                                    <p>{item.name}</p>
+                                    <p>{item.value}</p>
+                                    <p>{item.type}</p>
+                                    <p>{item.category}</p>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

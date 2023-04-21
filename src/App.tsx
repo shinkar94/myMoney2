@@ -1,27 +1,27 @@
 import './App.css'
 import {Content} from "./component/Content/Content";
-import {useAppSelector} from "./Hok/useAppSelector";
-import {income, outcome} from "./Reducer/allStateReducer";
-import {useSelector} from "react-redux";
+import {useAppDispatch, useAppSelector} from "./Hok/useAppSelector";
 import {SideBar} from "./component/SideBar/SideBar";
 import styled from "styled-components";
+import {AddOperationForm} from "./component/AddOperationForm/AddOperationForm";
 
 
 function App() {
     const state = useAppSelector(state => state.allState)
+    const dispatch= useAppDispatch()
 
-    const sum = (idOperations: string) => {
-        return state[idOperations].reduce((acc, el) => {
-            return acc + el.value
-        }, 0)
+    const sum = (type: string) => {
+        return state.filter(item =>
+            item.type === type).reduce((acc, el) =>
+            acc + el.value, 0)
     }
     return (
         <div className="App">
             <Wrapper>
-                <SideBar />
+                <SideBar/>
                 <div className="contentWrapper" style={{width: "80vw"}}>
-                    <button style={{position: "absolute", bottom: "10px", right: "10px", width: "80px", height: "80px", borderRadius: "50%", color: "white", background: "red"}}>+</button>
-                    <Content totalIncome={sum(income)} totalOutcome={sum(outcome)} expenses={state[outcome]}/>
+                    <AddOperationForm dispatch={dispatch}/>
+                    <Content totalIncome={sum('income')} totalOutcome={sum('outcome')} state={state}/>
                 </div>
             </Wrapper>
         </div>

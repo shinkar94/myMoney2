@@ -4,19 +4,19 @@ import incomeIcon from '../../img/income.svg'
 import outcomeIcon from '../../img/outcome.svg'
 import pigIcon from '../../img/pig.svg'
 import walletIcon from '../../img/wallet.svg'
-import {HomePage} from "./Main/Main";
+import {HomePage} from "./Main/HomePage";
 
 import {JobApplication} from "./JobApplication/JobApplication";
-import {ItemType} from "../../Reducer/allStateReducer";
+import {OperationsType} from "../../Reducer/allStateReducer";
 
 type ContentType = {
     totalIncome: number
     totalOutcome: number
-    expenses: ItemType[]
+    state: OperationsType[]
 }
 
 export const Content: React.FC<ContentType> = (props) => {
-    const {totalIncome, totalOutcome,expenses} = props
+    const {totalIncome, totalOutcome,state} = props
     return (
         <StContent>
             <TopAnalyticsCard>
@@ -27,7 +27,7 @@ export const Content: React.FC<ContentType> = (props) => {
             </TopAnalyticsCard>
             <Main>
                 {/*тут route*/}
-                <HomePage expenses={expenses} totalOutcome={totalOutcome}/>
+                <HomePage state={state} totalOutcome={totalOutcome}/>
             </Main>
 
         </StContent>

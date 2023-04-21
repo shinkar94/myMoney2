@@ -1,10 +1,8 @@
 import React from 'react';
 import {v1} from "uuid";
 
-export type OperationsType = {
-    [key: string]: ItemType[]
-}
-export type ItemType =
+
+export type OperationsType =
     {
         id: string
         value: number
@@ -15,69 +13,81 @@ export type ItemType =
         name: string
     };
 
-export const income = 'income'
-export const outcome = 'outcome'
-const initialState: OperationsType = {
-    [income]: [
-        {
-            id: v1(),
-            date: "14-04-2023",
-            name: "",
-            value: 12500,
-            type: "income",
-            description: "sdfsdf",
-            category: "sdfsdf"
-        },
-        {
-            id: v1(),
-            date: "14-04-2023",
-            name: "",
-            value: 12700,
-            type: "income",
-            description: "sdfsdf",
-            category: "sdfsdf"
-        }
-    ],
-    [outcome]: [
-        {
-            id: v1(),
-            date: "14-04-2023",
-            name: "",
-            value: 200,
-            type: "outcome",
-            description: "sdfsdf",
-            category: "sdfsdfsdf"
-        },
-        {
-            id: v1(),
-            date: "14-04-2023",
-            name: "",
-            value: 200,
-            type: "outcome",
-            description: "sdfsdf",
-            category: "sdfsdfsdf"
-        }
-    ],
-}
 
-export const allStateReducer = (state: OperationsType = initialState, action: any):OperationsType => {
-switch (action.type) {
-    case "XXX": {
-        return state
+const initialState: OperationsType[] = [
+    {
+        id: v1(),
+        date: "14-04-2023",
+        name: "",
+        value: 12500,
+        type: "income",
+        description: "sdfsdf",
+        category: "auto"
+    },
+    {
+        id: v1(),
+        date: "14-04-2023",
+        name: "",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop"
+    },
+    {
+        id: v1(),
+        date: "14-04-2023",
+        name: "",
+        value: 123000,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "shmotki"
+    },
+    {
+        id: v1(),
+        date: "14-04-2023",
+        name: "",
+        value: 4000,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
     }
-    default: return state
-}
+]
+
+export const allStateReducer = (state: OperationsType[] = initialState, action: ActionType): OperationsType[] => {
+    switch (action.type) {
+        case "ADD-OPERATION": {
+            return [...state, action.newOperation]
+        }
+        default:
+            return state
+    }
 
 }
 
+type ActionType = addOperationAC
 
-// type SumACType = ReturnType<typeof sumAC>
-//
-// export const sumAC = (idOperations: string)=> {
+type addOperationAC = ReturnType<typeof addOperationAC>
+// export const addOperationAC = (date:string, name: string, value:number,type: string,description:string,category: string  )=> {
 //     return {
-//         type: "XXX",
+//         type: 'ADD-OPERATION',
 //         payload: {
-//             idOperations
+//             newOperation: {
+//                 id: v1(),
+//                 date: date,
+//                 name: name,
+//                 value: value,
+//                 type: type,
+//                 description: description,
+//                 category: category
+//             },
 //         }
 //     }as const
 // }
+
+export const addOperationAC = ( newOperation: OperationsType)=> {
+    return {
+        type: 'ADD-OPERATION',
+        newOperation
+
+    }as const
+}
