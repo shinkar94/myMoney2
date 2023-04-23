@@ -8,7 +8,7 @@ import {AddOperationForm} from "./component/AddOperationForm/AddOperationForm";
 
 function App() {
     const state = useAppSelector(state => state.allState)
-    const dispatch= useAppDispatch()
+    // const dispatch= useAppDispatch()
 
     const sum = (type: string) => {
         return state.filter(item =>
@@ -19,10 +19,10 @@ function App() {
         <div className="App">
             <Wrapper>
                 <SideBar/>
-                <div className="contentWrapper" style={{width: "80vw"}}>
-                    <AddOperationForm dispatch={dispatch}/>
+                <ContentWrapper>
+                    <AddOperationForm />
                     <Content totalIncome={sum('income')} totalOutcome={sum('outcome')} state={state}/>
-                </div>
+                </ContentWrapper>
             </Wrapper>
         </div>
     )
@@ -31,10 +31,15 @@ function App() {
 export default App
 
 
+
+
 const Wrapper = styled.div`
-  width: 100vw;
+  
   height: 100vh;
-  background: gray;
+  background: red;
   display: flex;
 
+`
+const ContentWrapper = styled.div`
+  padding-left: 30px;
 `

@@ -6,8 +6,11 @@ import pigIcon from '../../img/pig.svg'
 import walletIcon from '../../img/wallet.svg'
 import {HomePage} from "./Main/HomePage";
 
+
 import {JobApplication} from "./JobApplication/JobApplication";
 import {OperationsType} from "../../Reducer/allStateReducer";
+import {Navigate, Route, Routes} from 'react-router-dom';
+import {Error404} from '../common/Error';
 
 type ContentType = {
     totalIncome: number
@@ -16,7 +19,7 @@ type ContentType = {
 }
 
 export const Content: React.FC<ContentType> = (props) => {
-    const {totalIncome, totalOutcome,state} = props
+    const {totalIncome, totalOutcome, state} = props
     return (
         <StContent>
             <TopAnalyticsCard>
@@ -26,8 +29,12 @@ export const Content: React.FC<ContentType> = (props) => {
                 <JobApplication img={pigIcon} value={10} name={"zanachka"}/>
             </TopAnalyticsCard>
             <Main>
-                {/*тут route*/}
-                <HomePage state={state} totalOutcome={totalOutcome}/>
+                <Routes>
+                    {/*тут route*/}
+                    <Route path={'/homepage'} element={<HomePage state={state} totalOutcome={totalOutcome}/>}/>
+                    <Route path={'/'} element={<Navigate to={'/homepage'}/>}/>
+                    <Route path={'/*'} element={<Error404/>}/>
+                </Routes>
             </Main>
 
         </StContent>
@@ -35,7 +42,12 @@ export const Content: React.FC<ContentType> = (props) => {
 };
 
 const StContent = styled.div`
+ 
+  width: calc(100vw - 30px);
   background: #222131;
+  
+
+
 `
 const TopAnalyticsCard = styled.div`
   color: white;

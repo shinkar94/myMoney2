@@ -5,12 +5,15 @@ import {SuperInput} from '../common/SuperInput';
 import {SuperButton} from '../common/SuperButton';
 import {Dispatch} from 'redux';
 import {SuperSelect} from '../common/SuperSelect';
+import {useAppDispatch} from "../../Hok/useAppSelector";
+import styled, {css} from "styled-components";
 
-type AddOperationFormType = {
-    dispatch: Dispatch
-}
 
-export const AddOperationForm: React.FC<AddOperationFormType> = (props) => {
+
+export const AddOperationForm = () => {
+
+    const dispatch= useAppDispatch()
+
 
     const [newItem, setNewItem] = useState<OperationsType>({
         id: v1(),
@@ -22,6 +25,8 @@ export const AddOperationForm: React.FC<AddOperationFormType> = (props) => {
         category: 'beer'
     })
 
+    const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
+
     const options = [
         {id: 1, value: 'income'},
         {id: 2, value: 'outcome'}
@@ -30,13 +35,13 @@ export const AddOperationForm: React.FC<AddOperationFormType> = (props) => {
 
     const onClickHandler = () => {
         // Рома, сделай диспатч
-        props.dispatch(addOperationAC(newItem))
+        dispatch(addOperationAC(newItem))
     }
 
     return (
         <div>
             {/*<input type="text" value={newItem.name} onChange={onChangHandler}/>*/}
-            <div>
+            <ModalOperationForm collapsedForm={collapsedForm}>
                 <SuperInput property={'date'} newItem={newItem} type={'date'} setNewItem={setNewItem}
                             value={newItem.date}/>
                 <SuperInput property={'name'} newItem={newItem} type={'text'} setNewItem={setNewItem}
@@ -51,9 +56,9 @@ export const AddOperationForm: React.FC<AddOperationFormType> = (props) => {
                 <SuperInput property={'category'} newItem={newItem} type={'text'} setNewItem={setNewItem}
                             value={newItem.category}/>
                 <SuperButton callBack={onClickHandler} name={'ADD'}/>
-            </div>
+            </ModalOperationForm>
 
-            <button style={{
+            <button onClick={()=>setCollapsedForm(!collapsedForm)} style={{
                 position: 'fixed',
                 bottom: '10px',
                 right: '10px',
@@ -67,4 +72,22 @@ export const AddOperationForm: React.FC<AddOperationFormType> = (props) => {
         </div>
     );
 };
+
+type ModalType = {
+    collapsedForm: boolean
+}
+const ModalOperationForm = styled.div<ModalType>`
+  position: fixed;
+  top: -74px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+  ${props => props.collapsedForm && css`
+    top: 50%;
+  `}
+
+`
 
