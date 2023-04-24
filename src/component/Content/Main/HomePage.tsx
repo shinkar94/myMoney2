@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Chart from 'chart.js/auto';
 import {OperationsType} from "../../../Reducer/allStateReducer";
+import {LineChartWithBoundaries} from "./LeftDiograms/LineChartWithBoundaries";
 
 
 type HomePageType = {
@@ -86,7 +87,9 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
     return (
         <HomePageWrapper>
             <div className="topContainer">
-                <div className="block graf">asdfsadf</div>
+                <div className="block graf">
+                    <LineChartWithBoundaries />
+                </div>
                 <div className="block analitic">
                     <h3>Аналитика расходов</h3>
                     {/*{analytics}*/}
