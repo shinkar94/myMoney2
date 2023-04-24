@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Chart from 'chart.js/auto';
 import {OperationsType} from "../../../Reducer/allStateReducer";
 import {LineChartWithBoundaries} from "./LeftDiograms/LineChartWithBoundaries";
+import {TableOperations} from "./TableOperations/TableOperations";
 
 
 type HomePageType = {
@@ -99,28 +100,7 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
                 </div>
             </div>
             <div className="bottomContainer">
-                <div className="table">
-                    <div className="head">
-                        <div className="th">date</div>
-                        <div className="th">name</div>
-                        <div className="th">sum</div>
-                        <div className="th">type</div>
-                        <div className="th">category</div>
-                    </div>
-                    <div className="tbody">
-                        {state.map(item => {
-                            return (
-                                <div className="tr" style={{display: 'flex', gap: '10px'}}>
-                                    <p>{item.date}</p>
-                                    <p>{item.name}</p>
-                                    <p>{item.value}</p>
-                                    <p>{item.type}</p>
-                                    <p>{item.category}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+                <TableOperations />
             </div>
         </HomePageWrapper>
     );
@@ -160,34 +140,8 @@ const HomePageWrapper = styled.div`
   .bottomContainer {
     padding: 10px;
     color: white;
-
-    .table {
-      background: #222131;
-      box-shadow: 0 0 10px black;
-      padding: 4px;
-      border-radius: 4px;
-
-      .head {
-        display: flex;
-        border: 1px solid white;
-
-        .th {
-          width: 20%;
-          border: 1px solid white;
-          text-align: center;
-        }
-      }
-
-      .tbody {
-        .tr {
-          border: 1px solid white;
-
-          & p {
-            border: 1px solid white;
-          }
-        }
-      }
-    }
+    height: 400px;
+    overflow: auto;
   }
 `
 

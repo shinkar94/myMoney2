@@ -18,7 +18,7 @@ const initialState: OperationsType[] = [
     {
         id: v1(),
         date: "14-04-2023",
-        name: "",
+        name: "test",
         value: 12500,
         type: "income",
         description: "sdfsdf",
@@ -27,7 +27,7 @@ const initialState: OperationsType[] = [
     {
         id: v1(),
         date: "14-04-2023",
-        name: "",
+        name: "milk",
         value: 12700,
         type: "income",
         description: "sdfsdf",
@@ -36,7 +36,7 @@ const initialState: OperationsType[] = [
     {
         id: v1(),
         date: "14-04-2023",
-        name: "",
+        name: "bread",
         value: 123000,
         type: "outcome",
         description: "sdfsdf",
@@ -45,7 +45,7 @@ const initialState: OperationsType[] = [
     {
         id: v1(),
         date: "14-04-2023",
-        name: "",
+        name: "ages",
         value: 4000,
         type: "outcome",
         description: "sdfsdf",
