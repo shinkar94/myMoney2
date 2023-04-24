@@ -13,7 +13,7 @@ type HomePageType = {
 }
 
 export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
-    const expenseAnalytics: OperationsType[] = state.filter(item => item.type === 'outcome')
+    const expenseAnalytics: OperationsType[] = state.filter(item => item.type === "outcome")
         .reduce((acc: OperationsType[], {category, value, ...rest}) => {
             const categoryIndex = acc.findIndex(
                 (item) => item.category === category

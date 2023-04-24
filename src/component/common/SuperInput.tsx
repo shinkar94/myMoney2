@@ -7,10 +7,11 @@ type InputPropsType = {
     type: string
     newItem: OperationsType
     property: string
+    placeholder?:string
 }
 
 export const SuperInput: React.FC<InputPropsType> = (props) => {
-    const {setNewItem,value,type,newItem,property } = props
+    const {setNewItem,value,type,newItem,property,placeholder } = props
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewItem(type === 'number'
             ? {...newItem, [property]: Number(e.currentTarget.value)}
@@ -18,7 +19,7 @@ export const SuperInput: React.FC<InputPropsType> = (props) => {
     }
     return (
         <>
-            <input type={type} value={value} onChange={onChangeInputHandler}/>
+            <input placeholder={placeholder} type={type} value={value} onChange={onChangeInputHandler}/>
         </>
     );
 };

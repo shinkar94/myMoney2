@@ -17,12 +17,12 @@ export const AddOperationForm = () => {
 
     const [newItem, setNewItem] = useState<OperationsType>({
         id: v1(),
-        date: '14-04-2023',
+        date: '',
         name: '',
-        value: 4000,
-        type: 'outcome',
-        description: 'sdfsdf',
-        category: 'beer'
+        value: 0,
+        type: '',
+        description: '',
+        category: ''
     })
 
     const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
@@ -31,29 +31,36 @@ export const AddOperationForm = () => {
         {id: 1, value: 'income'},
         {id: 2, value: 'outcome'}
     ]
-    const [optionsValue, setOptionsValue] = useState<number>(1)
-
     const onClickHandler = () => {
         // Рома, сделай диспатч
         dispatch(addOperationAC(newItem))
+        setNewItem({
+            id: v1(),
+            date: '',
+            name: '',
+            value: 0,
+            type: '',
+            description: '',
+            category: ''
+        })
     }
 
     return (
         <div>
             {/*<input type="text" value={newItem.name} onChange={onChangHandler}/>*/}
             <ModalOperationForm collapsedForm={collapsedForm}>
-                <SuperInput property={'date'} newItem={newItem} type={'date'} setNewItem={setNewItem}
+                <SuperInput  property={'date'} newItem={newItem} type={'date'} setNewItem={setNewItem}
                             value={newItem.date}/>
-                <SuperInput property={'name'} newItem={newItem} type={'text'} setNewItem={setNewItem}
+                <SuperInput placeholder={'Название покупки'} property={'name'} newItem={newItem} type={'text'} setNewItem={setNewItem}
                             value={newItem.name}/>
-                <SuperInput property={'value'} newItem={newItem} type={'number'} setNewItem={setNewItem}
+                <SuperInput placeholder={'Сумма покупки'} property={'value'} newItem={newItem} type={'number'} setNewItem={setNewItem}
                             value={newItem.value}/>
                 {/*<SuperInput property={'type'} newItem={newItem} type={'text'} setNewItem={setNewItem}*/}
                 {/*            value={newItem.type}/>*/}
-                <SuperSelect options={options} onChangeOption={setOptionsValue}/>
-                <SuperInput property={'description'} newItem={newItem} type={'text'} setNewItem={setNewItem}
+                <SuperSelect options={options} newItem={newItem} property={'type'} onChangeOption={setNewItem}/>
+                <SuperInput placeholder={'Описание'} property={'description'} newItem={newItem} type={'text'} setNewItem={setNewItem}
                             value={newItem.description}/>
-                <SuperInput property={'category'} newItem={newItem} type={'text'} setNewItem={setNewItem}
+                <SuperInput placeholder={'Категория'} property={'category'} newItem={newItem} type={'text'} setNewItem={setNewItem}
                             value={newItem.category}/>
                 <SuperButton callBack={onClickHandler} name={'ADD'}/>
             </ModalOperationForm>
