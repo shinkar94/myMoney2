@@ -34,6 +34,7 @@ const Nav = styled.div<NavType>`
   padding: 15px 30px 15px 15px;
   background-color: grey;
   transition: 0.5s;
+  z-index: 1;
   ${props => props.navWindow && css`
     left: 0;
   `}

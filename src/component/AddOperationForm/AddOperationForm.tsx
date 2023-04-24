@@ -85,6 +85,7 @@ const ModalOperationForm = styled.div<ModalType>`
   width: 300px;
   transform: translate(-50%, -50%);
   transition: 1s;
+  z-index: 1;
   ${props => props.collapsedForm && css`
     top: 50%;
   `}

@@ -38,8 +38,15 @@ const Wrapper = styled.div`
   height: 100vh;
   background: red;
   display: flex;
+  margin-left: 30px;
+  margin-right: 30px;
 
 `
 const ContentWrapper = styled.div`
-  padding-left: 30px;
+  //margin-left: 30px;
+  //margin-right: 30px;
+  //width: 50%;
+  //padding: 0px 0px 0px 30px;
+  //padding: 10px 0px 10px 40px;
+  //margin-right: 100px;
 `

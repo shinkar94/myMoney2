@@ -91,10 +91,10 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
                 <div className="block graf">
                     <LineChartWithBoundaries />
                 </div>
-                <div className="block analitic">
+                <div className="block analitic" style={{display: "flex",flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                     <h3>Аналитика расходов</h3>
                     {/*{analytics}*/}
-                    <div>
+                    <div style={{height: "400px"}}>
                         <canvas ref={chartRef}/>
                     </div>
                 </div>
@@ -107,11 +107,11 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
 };
 
 const HomePageWrapper = styled.div`
+  padding: 20px 10px 20px 10px;
   .topContainer {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 20px;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 10px;
 
     .block {
@@ -138,7 +138,7 @@ const HomePageWrapper = styled.div`
   }
 
   .bottomContainer {
-    padding: 10px;
+    padding: 10px 0;
     color: white;
     height: 400px;
     overflow: auto;

@@ -54,8 +54,8 @@ const TopAnalyticsCard = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: space-around;
-  padding: 20px 0;
+  justify-content: space-between;
+  padding: 20px 10px 20px 10px;
 `
 const Main = styled.div`
 
