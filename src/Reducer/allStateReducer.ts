@@ -36,8 +36,35 @@ const initialState: OperationsType[] = [
     {
         id: v1(),
         date: "14-04-2023",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop"
+    },
+    {
+        id: v1(),
+        date: "14-01-2023",
         name: "bread",
-        value: 123000,
+        value: 123,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "shmotki"
+    },
+    {
+        id: v1(),
+        date: "14-02-2023",
+        name: "bread",
+        value: 12,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "shmotki"
+    },
+    {
+        id: v1(),
+        date: "14-03-2023",
+        name: "bread",
+        value: 1234,
         type: "outcome",
         description: "sdfsdf",
         category: "shmotki"
@@ -46,11 +73,82 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-04-2023",
         name: "ages",
-        value: 4000,
+        value: 400,
         type: "outcome",
         description: "sdfsdf",
         category: "beer"
-    }
+    },
+    {
+        id: v1(),
+        date: "14-05-2023",
+        name: "ages",
+        value: 400,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
+    {
+        id: v1(),
+        date: "14-06-2023",
+        name: "ages",
+        value: 400,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },{
+        id: v1(),
+        date: "14-07-2023",
+        name: "ages",
+        value: 400,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
+    {
+        id: v1(),
+        date: "14-08-2023",
+        name: "ages",
+        value: 400,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
+    {
+        id: v1(),
+        date: "14-09-2023",
+        name: "ages",
+        value: 400,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
+    {
+        id: v1(),
+        date: "14-10-2023",
+        name: "ages",
+        value: 500,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
+    {
+        id: v1(),
+        date: "14-11-2023",
+        name: "ages",
+        value: 600,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
+    {
+        id: v1(),
+        date: "14-12-2023",
+        name: "ages",
+        value: 700,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "beer"
+    },
 ]
 
 export const allStateReducer = (state: OperationsType[] = initialState, action: ActionType): OperationsType[] => {

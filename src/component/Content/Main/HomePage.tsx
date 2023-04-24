@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Chart from 'chart.js/auto';
 import {OperationsType} from "../../../Reducer/allStateReducer";
-import {LineChartWithBoundaries} from "./LeftDiograms/LineChartWithBoundaries";
+import { LineChartWithBoundaries} from "./LeftDiograms/LineChartWithBoundaries";
 import {TableOperations} from "./TableOperations/TableOperations";
 
 
@@ -31,7 +31,7 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
     }));
     const chartRef = useRef<HTMLCanvasElement>(null);
     useEffect(() => {
-
+        console.log(chartRef.current)
         /*Это условие проверяет, существует ли объект chartRef и имеет ли он значение current. Это гарантирует,
         что диаграмма создается только в том случае, если доступен элемент DOM, в который она будет отображаться.*/
         if (chartRef && chartRef.current) {
@@ -84,6 +84,8 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome, state}) => {
             };
         }
     }, [expensePercentages]);
+
+
 
     return (
         <HomePageWrapper>
