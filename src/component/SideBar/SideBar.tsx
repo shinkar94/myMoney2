@@ -1,11 +1,20 @@
 import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import styled, {css} from "styled-components";
+import {useAppDispatch} from "../../Hok/useAppSelector";
+import {useDispatch} from "react-redux";
+import {onBlurAC} from "../../Reducer/helperReducer";
+
 
 export const SideBar = () => {
 
-    const [navWindow, setNavWindow] = useState<boolean>(false)
+    const dispatch = useDispatch()
 
+    const [navWindow, setNavWindow] = useState<boolean>(false)
+    const onClickHandler = () => {
+        setNavWindow(!navWindow)
+        dispatch(onBlurAC(true))
+    }
     return (
         <Nav navWindow={navWindow}>
             <NavLink to={'/'}> HOME-PAGE </NavLink>
@@ -14,7 +23,7 @@ export const SideBar = () => {
             <NavLink to={'/'}> КАТЕГОРИИ </NavLink>
             <NavLink to={'/'}> РЕГУЛЯРНЫЕ ПЛАТЕЖИ </NavLink>
             <NavLink to={'/'}> ВАЛЮТА </NavLink>
-            <button onClick={()=>setNavWindow(!navWindow)}>{navWindow ? `<<` : `>>` }</button>
+            <button onClick={onClickHandler}>{navWindow ? `<<` : `>>`}</button>
             <input type="date"/>
         </Nav>
     );
@@ -34,7 +43,8 @@ const Nav = styled.div<NavType>`
   padding: 15px 30px 15px 15px;
   background-color: grey;
   transition: 0.5s;
-  z-index: 1;
+  z-index: 2;
+
   ${props => props.navWindow && css`
     left: 0;
   `}

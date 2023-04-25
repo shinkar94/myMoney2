@@ -4,11 +4,12 @@ import {useAppDispatch, useAppSelector} from "./Hok/useAppSelector";
 import {SideBar} from "./component/SideBar/SideBar";
 import styled from "styled-components";
 import {AddOperationForm} from "./component/AddOperationForm/AddOperationForm";
+import {useState} from "react";
 
 
 function App() {
     const state = useAppSelector(state => state.allState)
-    // const dispatch= useAppDispatch()
+    const [onBlur, setOnBlur] = useState<boolean>(false)
 
     const sum = (type: string) => {
         return state.filter(item =>
@@ -21,7 +22,7 @@ function App() {
                 <SideBar/>
                 <ContentWrapper>
                     <AddOperationForm />
-                    <Content totalIncome={sum('income')} totalOutcome={sum('outcome')} state={state}/>
+                    <Content totalIncome={sum('income')} totalOutcome={sum('outcome')} />
                 </ContentWrapper>
             </Wrapper>
         </div>

@@ -15,11 +15,10 @@ import {Error404} from '../common/Error';
 type ContentType = {
     totalIncome: number
     totalOutcome: number
-    state: OperationsType[]
 }
 
 export const Content: React.FC<ContentType> = (props) => {
-    const {totalIncome, totalOutcome, state} = props
+    const {totalIncome, totalOutcome} = props
     return (
         <StContent>
             <TopAnalyticsCard>
@@ -31,7 +30,7 @@ export const Content: React.FC<ContentType> = (props) => {
             <Main>
                 <Routes>
                     {/*тут route*/}
-                    <Route path={'/homepage'} element={<HomePage state={state} totalOutcome={totalOutcome}/>}/>
+                    <Route path={'/homepage'} element={<HomePage totalOutcome={totalOutcome}/>}/>
                     <Route path={'/'} element={<Navigate to={'/homepage'}/>}/>
                     <Route path={'/*'} element={<Error404/>}/>
                 </Routes>
