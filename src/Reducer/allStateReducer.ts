@@ -46,7 +46,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-01-2023",
         name: "bread",
-        value: 123,
+        value: 0,
         type: "outcome",
         description: "sdfsdf",
         category: "shmotki"
@@ -55,7 +55,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-02-2023",
         name: "bread",
-        value: 12,
+        value: 600,
         type: "outcome",
         description: "sdfsdf",
         category: "shmotki"
@@ -64,7 +64,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-03-2023",
         name: "bread",
-        value: 1234,
+        value: 1000,
         type: "outcome",
         description: "sdfsdf",
         category: "shmotki"
@@ -73,7 +73,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-04-2023",
         name: "ages",
-        value: 400,
+        value: 600,
         type: "outcome",
         description: "sdfsdf",
         category: "beer"
@@ -82,7 +82,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-05-2023",
         name: "ages",
-        value: 400,
+        value: 500,
         type: "outcome",
         description: "sdfsdf",
         category: "beer"
@@ -91,7 +91,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-06-2023",
         name: "ages",
-        value: 400,
+        value: 600,
         type: "outcome",
         description: "sdfsdf",
         category: "beer"
@@ -108,7 +108,7 @@ const initialState: OperationsType[] = [
         id: v1(),
         date: "14-08-2023",
         name: "ages",
-        value: 400,
+        value: 300,
         type: "outcome",
         description: "sdfsdf",
         category: "beer"
