@@ -1,20 +1,22 @@
 import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import styled, {css} from "styled-components";
-import {useAppDispatch} from "../../Hok/useAppSelector";
+import {useAppDispatch, useAppSelector} from "../../Hok/useAppSelector";
 import {useDispatch} from "react-redux";
 import {onBlurAC} from "../../Reducer/helperReducer";
 
 
 export const SideBar = () => {
-
+    const stateOnBlur = useAppSelector(state=> state.helper)
     const dispatch = useDispatch()
 
     const [navWindow, setNavWindow] = useState<boolean>(false)
+
     const onClickHandler = () => {
         setNavWindow(!navWindow)
-        dispatch(onBlurAC(true))
+        dispatch(onBlurAC('sideBarBtn'))
     }
+    console.log(stateOnBlur.onBlur)
     return (
         <Nav navWindow={navWindow}>
             <NavLink to={'/'}> HOME-PAGE </NavLink>
@@ -23,7 +25,9 @@ export const SideBar = () => {
             <NavLink to={'/'}> КАТЕГОРИИ </NavLink>
             <NavLink to={'/'}> РЕГУЛЯРНЫЕ ПЛАТЕЖИ </NavLink>
             <NavLink to={'/'}> ВАЛЮТА </NavLink>
-            <button onClick={onClickHandler}>{navWindow ? `<<` : `>>`}</button>
+
+            <button  onClick={onClickHandler}>{navWindow ? `<<` : `>>`}</button>
+
             <input type="date"/>
         </Nav>
     );

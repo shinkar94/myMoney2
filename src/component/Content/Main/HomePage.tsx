@@ -11,7 +11,7 @@ type HomePageType = {
 }
 
 export const HomePage: React.FC<HomePageType> = ({totalOutcome}) => {
-    const helper = useAppSelector(state=> state.helper.onBlur)
+    const helper = useAppSelector(state=> state.helper)
     console.log(helper)
     return (
         <HomePageWrapper>
@@ -26,7 +26,7 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome}) => {
             <div className="bottomContainer">
                 <TableOperations/>
             </div>
-            {helper && <div className="shadowBlock"></div> }
+            {(helper.statusAddBtn || helper.statusBarBtn) && <div className="shadowBlock"></div> }
         </HomePageWrapper>
     );
 };

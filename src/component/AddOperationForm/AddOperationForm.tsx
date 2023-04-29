@@ -4,13 +4,14 @@ import {v1} from 'uuid';
 import {SuperInput} from '../common/SuperInput';
 import {SuperButton} from '../common/SuperButton';
 import {SuperSelect} from '../common/SuperSelect';
-import {useAppDispatch} from "../../Hok/useAppSelector";
+import {useAppDispatch, useAppSelector} from "../../Hok/useAppSelector";
 import styled, {css} from "styled-components";
 import {Dispatch} from "redux";
+import {onBlurAC} from "../../Reducer/helperReducer";
 
 
 export const AddOperationForm = () => {
-
+    const stateOnBlur = useAppSelector(state=> state.helper)
     const dispatch: Dispatch = useAppDispatch()
 
 
@@ -44,6 +45,11 @@ export const AddOperationForm = () => {
         })
     }
 
+    const formDownClick = ()=> {
+        setCollapsedForm(!collapsedForm)
+        dispatch(onBlurAC("addBtn"))
+    }
+
     return (
         <div>
             {/*<input type="text" value={newItem.name} onChange={onChangHandler}/>*/}
@@ -75,7 +81,7 @@ export const AddOperationForm = () => {
                 <SuperButton callBack={onClickHandler} name={'ADD'}/>
             </ModalOperationForm>
 
-            <button onClick={() => setCollapsedForm(!collapsedForm)} style={{
+            <button onClick={formDownClick} style={{
                 position: 'fixed',
                 bottom: '10px',
                 right: '10px',

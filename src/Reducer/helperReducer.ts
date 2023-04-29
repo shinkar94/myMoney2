@@ -1,18 +1,24 @@
-
 export type HelperType = {
-    onBlur: boolean
+    statusBarBtn: boolean
+    statusAddBtn: boolean
 }
 
 const initialState: HelperType = {
-    onBlur: false
+    statusBarBtn: false,
+    statusAddBtn: false,
 }
 
-export const helperReducer = (state = initialState, action: ActionType):HelperType => {
+export const helperReducer = (state = initialState, action: ActionType): HelperType => {
     switch (action.type) {
         case 'ONBLUR': {
-            return {...state, onBlur: action.payload.onBlur}
+            const status = action.payload.status
+            return status === 'sideBarBtn'
+                    ? {...state, statusBarBtn: !state.statusBarBtn}
+                    : {...state, statusAddBtn: !state.statusAddBtn}
+
         }
-        default: return state
+        default:
+            return state
     }
 }
 
@@ -21,11 +27,11 @@ type ActionType = OnBlurACType
 
 type OnBlurACType = ReturnType<typeof onBlurAC>
 
-export const onBlurAC = (onBlur: boolean)=> {
-    return{
+export const onBlurAC = (status: string) => {
+    return {
         type: "ONBLUR",
         payload: {
-            onBlur
+            status
         }
-    }as const
+    } as const
 }
