@@ -1,8 +1,9 @@
 import React, {FC, memo} from 'react';
 import {LineChartWithBoundaries} from "./LeftDiograms/LineChartWithBoundaries";
 import {RightDiagrams} from "./RightDiagrams/RightDiagrams";
-import {TableOperations} from "../TableOperations/TableOperations";
+import {TableOperations} from "./TableOperations/TableOperations";
 import styled from "styled-components";
+import {AccountWidget} from "./AccountWidget/AccountWidget";
 
 type PropsType = {
     totalOutcome: number
@@ -21,7 +22,8 @@ export const HomeContent:FC<PropsType> = memo((props) => {
                 </div>
             </TopContainer>
             <BottomContainer>
-                <TableOperations/>
+                <TableOperations />
+                <AccountWidget />
             </BottomContainer>
         </div>
     );
@@ -30,21 +32,20 @@ export const HomeContent:FC<PropsType> = memo((props) => {
 const TopContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 10px;
-  padding: 0 50px;
+  //padding: 0 50px;
 
   .block {
     background: #39394B;
     height: 400px;
     border-radius: 10px;
     color: white;
-    padding: 4px;
     min-width: 300px;
   }
 
   .graf {
-    width: 55%;
+    width: 60%;
   }
 
   .analitic {
@@ -58,8 +59,11 @@ const TopContainer = styled.div`
 `
 
 const BottomContainer = styled.div`
-  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 20px 0;
   color: white;
-  height: 400px;
-  overflow: auto;
+
 `

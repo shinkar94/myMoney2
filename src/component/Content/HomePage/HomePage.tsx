@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {LineChartWithBoundaries} from "./HomeContent/LeftDiograms/LineChartWithBoundaries";
-import {TableOperations} from "./TableOperations/TableOperations";
+import {TableOperations} from "./HomeContent/TableOperations/TableOperations";
 import {RightDiagrams} from "./HomeContent/RightDiagrams/RightDiagrams";
 import {useAppSelector} from "../../../Hok/useAppSelector";
 import {HomeContent} from "./HomeContent/HomeContent";
@@ -23,7 +23,7 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome}) => {
 };
 
 const HomePageWrapper = styled.div`
-  padding: 20px 10px 20px 10px;
+  padding: 20px 0;
   .shadowBlock {
     position: absolute;
     top: 0;

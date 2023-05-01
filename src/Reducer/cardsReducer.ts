@@ -23,7 +23,7 @@ const initialState = [
     {name: 'wallet',idCard: v1(),idUser: v1(),type:'bank',currency: 'RUB',nameCard: 'MasterCard', numberCard: '2345-****-****-7888', dateActive: '08/23', sumCard: 1400, user:{name: 'Egor', lastName: 'Belozerov'}}
 ]
 
-export const CardReducer = (state:CardsReducerType[] = initialState, action:any)=>{
+export const cardsReducer = (state:CardsReducerType[] = initialState, action:any)=>{
     switch (action.type) {
         case 'SSS':{
             return state

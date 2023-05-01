@@ -42,11 +42,9 @@ export const Content: React.FC<ContentType> = (props) => {
 
 const StContent = styled.div`
  
-  width: calc(100vw - 30px);
+  width: calc(100vw - 130px);
   background: #222131;
-  
-
-
+  padding:10px 50px;
 `
 const TopAnalyticsCard = styled.div`
   color: white;
@@ -54,7 +52,6 @@ const TopAnalyticsCard = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-between;
-  padding: 20px 60px 20px 60px;
 `
 const Main = styled.div`
 

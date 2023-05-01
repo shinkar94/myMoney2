@@ -1,19 +1,20 @@
 import React from 'react';
-import {useAppSelector} from "../../../../Hok/useAppSelector";
+import {useAppSelector} from "../../../../../Hok/useAppSelector";
 import styled from "styled-components";
 
 export const TableOperations = () => {
     const state = useAppSelector(state => state.allState)
     return (
-        <Table>
+        <TableWrapper>
+            <Table>
             <thead>
-                <tr>
-                    <th>date</th>
-                    <th>name</th>
-                    <th>sum</th>
-                    <th>type</th>
-                    <th>category</th>
-                </tr>
+            <tr>
+                <th>date</th>
+                <th>name</th>
+                <th>sum</th>
+                <th>type</th>
+                <th>category</th>
+            </tr>
             </thead>
             <tbody>
             {state.map(item => {
@@ -29,15 +30,24 @@ export const TableOperations = () => {
             })}
             </tbody>
         </Table>
+        </TableWrapper>
 
     );
 };
+const TableWrapper = styled.div`
+  height: 350px;
+  overflow: auto;
+  width: 60%;
+  border: 2px solid black;
+`
+
 const Table = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  border: 2px solid black;
+
   text-align: center;
+  
   & thead {
     position: sticky;
     top: 0;
