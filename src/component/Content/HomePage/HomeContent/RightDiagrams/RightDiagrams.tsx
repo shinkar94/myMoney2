@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useRef} from 'react';
-import {OperationsType} from "../../../../Reducer/allStateReducer";
+import {OperationsType} from "../../../../../Reducer/allStateReducer";
 import Chart from "chart.js/auto";
-import {useAppSelector} from "../../../../Hok/useAppSelector";
+import {useAppSelector} from "../../../../../Hok/useAppSelector";
 
 type RightType = {
     totalOutcome: number

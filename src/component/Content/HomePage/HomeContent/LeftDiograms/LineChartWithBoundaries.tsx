@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from "react";
 import {Chart, ChartOptions, LineControllerDatasetOptions, registerables} from 'chart.js';
-import {useAppSelector} from "../../../../Hok/useAppSelector";
+import {useAppSelector} from "../../../../../Hok/useAppSelector";
 
 // Регистрируем необходимые модули
 Chart.register(...registerables);

@@ -4,7 +4,7 @@ import incomeIcon from '../../img/income.svg'
 import outcomeIcon from '../../img/outcome.svg'
 import pigIcon from '../../img/pig.svg'
 import walletIcon from '../../img/wallet.svg'
-import {HomePage} from "./Main/HomePage";
+import {HomePage} from "./HomePage/HomePage";
 
 
 import {JobApplication} from "./JobApplication/JobApplication";
@@ -54,7 +54,7 @@ const TopAnalyticsCard = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-between;
-  padding: 20px 10px 20px 10px;
+  padding: 20px 60px 20px 60px;
 `
 const Main = styled.div`
 
