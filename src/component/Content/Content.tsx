@@ -5,8 +5,6 @@ import outcomeIcon from '../../img/outcome.svg'
 import pigIcon from '../../img/pig.svg'
 import walletIcon from '../../img/wallet.svg'
 import {HomePage} from "./HomePage/HomePage";
-
-
 import {JobApplication} from "./JobApplication/JobApplication";
 import {OperationsType} from "../../Reducer/allStateReducer";
 import {Navigate, Route, Routes} from 'react-router-dom';

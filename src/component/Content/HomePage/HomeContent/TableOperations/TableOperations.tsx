@@ -37,7 +37,7 @@ export const TableOperations = () => {
 const TableWrapper = styled.div`
   height: 350px;
   overflow: auto;
-  width: 60%;
+  min-width: 60%;
   border: 2px solid black;
 `
 
