@@ -15,7 +15,6 @@ export const helperReducer = (state = initialState, action: ActionType): HelperT
             return status === 'sideBarBtn'
                     ? {...state, statusBarBtn: !state.statusBarBtn}
                     : {...state, statusAddBtn: !state.statusAddBtn}
-
         }
         default:
             return state
