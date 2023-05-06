@@ -9,6 +9,7 @@ import {JobApplication} from "./JobApplication/JobApplication";
 import {OperationsType} from "../../Reducer/allStateReducer";
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {Error404} from '../common/Error';
+import {Calendar} from "../Calendar/Calendar";
 
 type ContentType = {
     totalIncome: number
@@ -19,16 +20,17 @@ export const Content: React.FC<ContentType> = (props) => {
     const {totalIncome, totalOutcome} = props
     return (
         <StContent>
-            <TopAnalyticsCard>
-                <JobApplication img={walletIcon} value={totalIncome - totalOutcome} name={"Balance"}/>
-                <JobApplication img={incomeIcon} value={totalIncome} name={"income"}/>
-                <JobApplication img={outcomeIcon} value={totalOutcome} name={"outcome"}/>
-                <JobApplication img={pigIcon} value={10} name={"zanachka"}/>
-            </TopAnalyticsCard>
+            {/*<TopAnalyticsCard>*/}
+            {/*    <JobApplication img={walletIcon} value={totalIncome - totalOutcome} name={"Balance"}/>*/}
+            {/*    <JobApplication img={incomeIcon} value={totalIncome} name={"income"}/>*/}
+            {/*    <JobApplication img={outcomeIcon} value={totalOutcome} name={"outcome"}/>*/}
+            {/*    <JobApplication img={pigIcon} value={10} name={"zanachka"}/>*/}
+            {/*</TopAnalyticsCard>*/}
             <Main>
                 <Routes>
                     {/*тут route*/}
-                    <Route path={'/homepage'} element={<HomePage totalOutcome={totalOutcome}/>}/>
+                    <Route path={'/homepage'} element={<HomePage totalIncome={totalIncome} totalOutcome={totalOutcome}/>}/>
+                    <Route path={'/calendar'} element={<Calendar/>}/>
                     <Route path={'/'} element={<Navigate to={'/homepage'}/>}/>
                     <Route path={'/*'} element={<Error404/>}/>
                 </Routes>

@@ -16,11 +16,10 @@ export const SideBar = () => {
         setNavWindow(!navWindow)
         dispatch(onBlurAC('sideBarBtn'))
     }
-    console.log(stateOnBlur.onBlur)
     return (
         <Nav navWindow={navWindow}>
             <NavLink to={'/'}> HOME-PAGE </NavLink>
-            <NavLink to={'/'}> CALENDAR </NavLink>
+            <NavLink to={'/calendar'}> CALENDAR </NavLink>
             <NavLink to={'/'}> ГРВФИКИ </NavLink>
             <NavLink to={'/'}> КАТЕГОРИИ </NavLink>
             <NavLink to={'/'}> РЕГУЛЯРНЫЕ ПЛАТЕЖИ </NavLink>

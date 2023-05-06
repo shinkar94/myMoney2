@@ -9,7 +9,6 @@ import {useState} from "react";
 
 function App() {
     const state = useAppSelector(state => state.allState)
-    const [onBlur, setOnBlur] = useState<boolean>(false)
 
     const sum = (type: string) => {
         return state.filter(item =>

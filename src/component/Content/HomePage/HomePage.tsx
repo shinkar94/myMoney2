@@ -5,17 +5,20 @@ import {TableOperations} from "./HomeContent/TableOperations/TableOperations";
 import {RightDiagrams} from "./HomeContent/RightDiagrams/RightDiagrams";
 import {useAppSelector} from "../../../Hok/useAppSelector";
 import {HomeContent} from "./HomeContent/HomeContent";
+import {TopCard} from "../../TopCard/TopCard";
 
 
 type HomePageType = {
     totalOutcome: number
+    totalIncome: number
 }
 
-export const HomePage: React.FC<HomePageType> = ({totalOutcome}) => {
+export const HomePage: React.FC<HomePageType> = ({totalOutcome,totalIncome}) => {
     const helper = useAppSelector(state=> state.helper)
     console.log(helper)
     return (
         <HomePageWrapper>
+            <TopCard totalOutcome={totalOutcome} totalIncome={totalIncome}/>
             <HomeContent totalOutcome={totalOutcome}/>
             {(helper.statusAddBtn || helper.statusBarBtn) && <div className="shadowBlock"></div> }
         </HomePageWrapper>
@@ -23,7 +26,7 @@ export const HomePage: React.FC<HomePageType> = ({totalOutcome}) => {
 };
 
 const HomePageWrapper = styled.div`
-  padding: 20px 0;
+  padding: 0px 0;
   .shadowBlock {
     position: absolute;
     top: 0;
