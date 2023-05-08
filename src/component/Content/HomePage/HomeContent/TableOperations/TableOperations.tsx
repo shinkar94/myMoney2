@@ -1,42 +1,109 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {useAppSelector} from "../../../../../Hok/useAppSelector";
 import styled from "styled-components";
-import filterDown from "../../../../../img/filterDown.svg"
-import filterUp from "../../../../../img/filterUp.svg"
+import filter from "../../../../../img/filter.svg"
+import {useDispatch} from "react-redux";
+import {sortDateAC, sortSumAC} from "../../../../../Reducer/allStateReducer";
 
 export const TableOperations = () => {
     const state = useAppSelector(state => state.allState)
+    const dispatch = useDispatch()
+
+    const [filterType, setFilterType] = useState<string>('')
+    const [tableMenu, setTableMenu] = useState<boolean>(true)
+    const [dateRange, setDateRange] = useState({
+        firstDate: '',
+        secondDate: ''
+    })
+
+    const FilterDate = (e: ChangeEvent<HTMLSelectElement>) => {
+        dispatch(sortDateAC(e.currentTarget.value))
+    }
+    const FilterSum = (e: ChangeEvent<HTMLSelectElement>) => {
+        dispatch(sortSumAC(e.currentTarget.value))
+    }
+
+    const OnChangeTypeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+        setFilterType(e.currentTarget.value)
+    }
+
+// Реализация фильтрации операций по инкоме и откоме
+    const FilteredState = () => {
+        return (filterType === 'income')
+            ? state.filter(el => el.type === 'income')
+            : (filterType === 'outcome')
+                ? state.filter(el => el.type === 'outcome')
+                : state
+    }
+    // вызов этой функции
+    let filteredForRender = FilteredState()
+
+    // реализация фильтрации операции по диапазону дат
+    const FilteredDate = () => {
+        let aDate = new Date(dateRange.firstDate).getTime()
+        let bDate = new Date(dateRange.secondDate).getTime()
+        return dateRange.secondDate && dateRange.firstDate
+
+            ? filteredForRender.filter(el => {
+                    return (
+                        new Date(el.date).getTime() >= aDate && new Date(el.date).getTime() <= bDate
+                    )
+                }
+            )
+            : filteredForRender
+    }
+
+
     return (
         <TableWrapper>
+            {tableMenu
+                ? <div>
+                    <div>начало периода</div>
+                    <input type="date"
+                           onChange={(e) => setDateRange({...dateRange, firstDate: e.currentTarget.value})}/>
+                    <div>конец периода</div>
+                    <input type="date"
+                           onChange={(e) => setDateRange({...dateRange, secondDate: e.currentTarget.value})}/>
+                    <div onClick={() => setTableMenu(!tableMenu)}> . . .</div>
+                </div>
+                :
+                <div>Название таблицы
+                    <div onClick={() => setTableMenu(!tableMenu)}>...</div></div>}
             <Table>
                 <thead>
                 <tr>
                     <th>
                         <div>
                             date
-                            <button>
-                            </button>
+
+                            <select onChange={FilterDate}>
+                                <option value={"up"}>up</option>
+                                <option value={"down"}>down</option>
+                            </select>
                         </div>
                     </th>
                     <th>
                         <div>
                             name
-                            <button>
-                            </button>
                         </div>
                     </th>
                     <th>
                         <div>
                             sum
-                            <button>
-                            </button>
+                            <select onChange={FilterSum}>
+                                <option value={"up"}>up</option>
+                                <option value={"down"}>down</option>
+                            </select>
                         </div>
                     </th>
                     <th>
                         <div>
                             type
-                            <button>
-                            </button>
+                            <select onChange={OnChangeTypeHandler}>
+                                <option value={"all"}>all</option>
+                                <option value={"income"}>income</option>
+                                <option value={"outcome"}>outcome</option>
+                            </select>
                         </div>
                     </th>
                     <th>
@@ -46,10 +113,11 @@ export const TableOperations = () => {
                             </button>
                         </div>
                     </th>
+
                 </tr>
                 </thead>
                 <tbody>
-                {state.map(item => {
+                {FilteredDate().map(item => {
                     return (
                         <tr key={item.id}>
                             <td>{item.date}</td>
@@ -77,10 +145,10 @@ const Table = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-
   text-align: center;
 
   & thead {
+
     position: sticky;
     top: 0;
     background: black;
@@ -92,16 +160,24 @@ const Table = styled.table`
       & div {
         display: flex;
         justify-content: center;
+        flex-direction: column;
 
-        & button {
-          background-image: url(${filterDown});
+        & select {
+            // background-image: url(${filter});
+          // background-repeat: no-repeat;
+          // background-position: center;
+          // background-size: 15px;
+          // background-color: transparent;
+          // border: none;
+          // cursor: pointer;
+          appearance: none;
+          background-color: black;
+          color: white;
+          background-image: url(${filter});
+          background-size: 20px;
           background-repeat: no-repeat;
-          background-position: center;
-          background-size: 15px;
-          background-color: transparent;
-          border: none;
-          padding: 10px 10px;
-          cursor: pointer;
+          background-position: right;
+          padding: 6px 24px 6px 0;
         }
       }
 
