@@ -139,6 +139,10 @@ const TableWrapper = styled.div`
   overflow: auto;
   min-width: 60%;
   border: 2px solid black;
+  box-shadow: 2px 2px 10px black;
+  border-radius: 10px;
+  padding: 5px;
+  background: #39394B;
 `
 
 const Table = styled.table`

@@ -11,7 +11,8 @@ import {onBlurAC} from "../../Reducer/helperReducer";
 
 
 export const AddOperationForm = () => {
-    const stateOnBlur = useAppSelector(state=> state.helper)
+    const stateHelper = useAppSelector(state=> state.helper)
+    const statusBtn = stateHelper.statusAddBtn
     const dispatch: Dispatch = useAppDispatch()
 
 
@@ -65,9 +66,6 @@ export const AddOperationForm = () => {
                 <SuperInput placeholder={'Сумма покупки'} property={'value'} newItem={newItem} type={'number'}
                             setNewItem={setNewItem}
                             value={newItem.value}/>
-
-                {/*<SuperInput property={'type'} newItem={newItem} type={'text'} setNewItem={setNewItem}*/}
-                {/*            value={newItem.type}/>*/}
                 <SuperSelect options={options} newItem={newItem} property={'type'} onChangeOption={setNewItem}/>
 
                 <SuperInput placeholder={'Описание'} property={'description'} newItem={newItem} type={'text'}
@@ -78,21 +76,17 @@ export const AddOperationForm = () => {
                             setNewItem={setNewItem}
                             value={newItem.category}/>
 
-                <SuperButton callBack={onClickHandler} name={'ADD'}/>
+                <SuperButton
+                    callBack={onClickHandler}
+                    name={'ADD'}
+                    bgColor={'linear-gradient(90deg, rgba(255, 255, 255, 0), #312b52, rgba(255, 255, 255, 0))'}
+                    height={'30px'}
+                    color={'white'}
+                    borderRadius={'4px'}
+                />
             </ModalOperationForm>
 
-            <button onClick={formDownClick} style={{
-                position: 'fixed',
-                bottom: '10px',
-                right: '10px',
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                color: 'white',
-                background: 'red',
-                zIndex: '2'
-            }}>+
-            </button>
+            <BtnAddForm status={statusBtn} onClick={formDownClick} >+</BtnAddForm>
         </div>
     );
 };
@@ -102,17 +96,55 @@ type ModalType = {
 }
 const ModalOperationForm = styled.div<ModalType>`
   position: fixed;
-  top: -74px;
+  top: -184px;
   left: 50%;
   display: flex;
   flex-direction: column;
   width: 300px;
   transform: translate(-50%, -50%);
   transition: 1s;
-  z-index: 2;
+  padding: 20px 10px 10px 10px;
+  background: #39394B;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px black;
+  z-index: 11;
   ${props => props.collapsedForm && css`
     top: 50%;
   `}
+  & input, select{
+    background: #222131;
+    color: rgb(215,215,215);
+    height: 40px;
+    //border: 2px outset black;
+    box-shadow: inset 2px 2px black;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    
+    &::placeholder{
+      color: rgb(215,215,215);
+    }
+  }
 
+`
+const BtnAddForm = styled.button<{status:boolean}>`
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  color: white;
+  background: radial-gradient(#312b52, rgba(255, 255, 255, 0));
+  z-index: 11;
+  cursor: pointer;
+  font-size: 45px;
+  transform: rotate(-0deg);
+  transition: 0.5s;
+  ${props => props.status && css`
+    transform: rotate(-45deg);
+  `}
+  &:hover{
+    background: radial-gradient(red, rgba(255, 255, 255, 0));
+  }
 `
 

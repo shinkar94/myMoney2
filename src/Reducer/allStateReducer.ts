@@ -17,7 +17,7 @@ export type OperationsType =
 const initialState: OperationsType[] = [
     {
         id: v1(),
-        date: "2020-04-14",
+        date: "2023-05-14",
         name: "test",
         value: 12500,
         type: "income",
@@ -26,7 +26,7 @@ const initialState: OperationsType[] = [
     },
     {
         id: v1(),
-        date: "2022-04-11",
+        date: "2023-04-11",
         name: "milk",
         value: 12700,
         type: "outcome",
@@ -35,16 +35,16 @@ const initialState: OperationsType[] = [
     },
     {
         id: v1(),
-        date: "2021-05-14",
+        date: "2023-03-17",
         name: "milk",
-        value: 12700,
+        value: 11700,
         type: "income",
         description: "sdfsdf",
         category: "shop"
     },
     {
         id: v1(),
-        date: "2020-03-14",
+        date: "2023-01-14",
         name: "milk",
         value: 12700,
         type: "outcome",
@@ -53,7 +53,7 @@ const initialState: OperationsType[] = [
     },
     {
         id: v1(),
-        date: "2023-01-14",
+        date: "2023-01-15",
         name: "milk",
         value: 12700,
         type: "income",

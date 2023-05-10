@@ -11,13 +11,15 @@ export const SideBar = () => {
     const dispatch = useDispatch()
 
     const [navWindow, setNavWindow] = useState<boolean>(false)
+    const [bgNav, setBgNav] = useState<boolean>(false)
 
     const onClickHandler = () => {
         setNavWindow(!navWindow)
+        setBgNav(!bgNav)
         dispatch(onBlurAC('sideBarBtn'))
     }
     return (
-        <Nav navWindow={navWindow}>
+        <Nav navWindow={navWindow} bg={bgNav}>
             <NavLink to={'/'}> HOME-PAGE </NavLink>
             <NavLink to={'/calendar'}> CALENDAR </NavLink>
             <NavLink to={'/'}> ГРВФИКИ </NavLink>
@@ -26,14 +28,14 @@ export const SideBar = () => {
             <NavLink to={'/'}> ВАЛЮТА </NavLink>
 
             <button  onClick={onClickHandler}>{navWindow ? `<<` : `>>`}</button>
-
-            <input type="date"/>
+            {/*<input type="date"/>*/}
         </Nav>
     );
 };
 
 type NavType = {
     navWindow: boolean
+    bg: boolean
 }
 const Nav = styled.div<NavType>`
   position: fixed;
@@ -44,12 +46,15 @@ const Nav = styled.div<NavType>`
   width: 200px;
   height: 100vh;
   padding: 15px 30px 15px 15px;
-  background-color: grey;
+  background: none;
   transition: 0.5s;
-  z-index: 2;
+  z-index: 11;
 
   ${props => props.navWindow && css`
     left: 0;
+  `}
+  ${props => props.bg && css`
+    background-color: #222131;
   `}
   & button {
     position: absolute;
@@ -57,7 +62,26 @@ const Nav = styled.div<NavType>`
     right: 0;
     height: 100vh;
     width: 30px;
-
+    background: linear-gradient(rgba(255, 255, 255, 0), #423B63, rgba(255, 255, 255, 0));
+    border: 0;
+    cursor: pointer;
+    color: white;
+    &:hover {
+      background: linear-gradient(rgba(255, 255, 255, 0), #e51832, rgba(255, 255, 255, 0));
+    }
+  }
+  & a{
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    height: 30px;
+    cursor: pointer;
+    &:hover{
+      color: #FF6384;
+      border-left: 2px solid #FF6384;
+      padding-left: 2px;
+    }
   }
 
 

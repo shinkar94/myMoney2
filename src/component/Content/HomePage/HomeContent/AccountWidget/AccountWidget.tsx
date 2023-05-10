@@ -65,33 +65,36 @@ const AccountWidgetWrapper = styled.div`
   padding: 4px;
   min-width: 300px;
   position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px black;
 `
 const CardsWrapper = styled.div`
   
 `
 
 const Card = styled.div`
-    width: 350px;
-    height: 200px;
+    width: 100%;
+    height: 75%;
     background: linear-gradient(to right, #1c1c1c 0%, #3a3a3a 100%);
     color: white;
     border-radius: 20px;
-    padding: 20px;
+    padding: 1vw;
     .title{
-      font-size: 18px;
+      font-size: 1.2vw;
     }
     .card-number{
-      font-size: 38px;
+      font-size: 2vw;
       text-align: center;
       margin-top: 30px;
       text-shadow: 0 2px  rgb(112, 112, 112);
     }
     .tutorial {
       .titleName{
-        font-size: 12px;
+        font-size: 0.5vw;
         margin: 10px 0 0 0;
       }
       .userName{
+        font-size: 0.8vw;
         margin: 0;
       }
     }
@@ -102,6 +105,7 @@ const Card = styled.div`
       margin-top: 20px;
       .date p, .cvv p{
         margin: 0;
+        font-size: 0.8vw;
       }
       .date{
         text-align: center;
@@ -111,6 +115,6 @@ const Card = styled.div`
       }
     }
     & img{
-      width: 60px;
+      width: 4vw;
     }
 `
