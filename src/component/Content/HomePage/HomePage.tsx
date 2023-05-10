@@ -15,7 +15,7 @@ type HomePageType = {
 
 export const HomePage: React.FC<HomePageType> = ({totalOutcome,totalIncome}) => {
     const helper = useAppSelector(state=> state.helper)
-    console.log(helper)
+    // console.log(helper)
     return (
         <HomePageWrapper>
             <TopCard totalOutcome={totalOutcome} totalIncome={totalIncome}/>

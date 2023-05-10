@@ -29,7 +29,7 @@ export const RightDiagrams: FC<RightType> = ({totalOutcome}) => {
     }));
     const chartRef = useRef<HTMLCanvasElement>(null);
     useEffect(() => {
-        console.log(chartRef.current)
+        // console.log(chartRef.current)
         /*Это условие проверяет, существует ли объект chartRef и имеет ли он значение current. Это гарантирует,
         что диаграмма создается только в том случае, если доступен элемент DOM, в который она будет отображаться.*/
         if (chartRef && chartRef.current) {

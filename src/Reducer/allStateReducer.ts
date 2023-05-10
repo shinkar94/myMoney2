@@ -63,7 +63,7 @@ const initialState: OperationsType[] = [
 
 
 ]
-console.log(new Date("2021-05-14").getTime())
+// console.log(new Date("2021-05-14").getTime())
 export const allStateReducer = (state: OperationsType[] = initialState, action: ActionType): OperationsType[] => {
     switch (action.type) {
         case "ADD-OPERATION": {

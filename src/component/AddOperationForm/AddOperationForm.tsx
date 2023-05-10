@@ -10,11 +10,15 @@ import {Dispatch} from "redux";
 import {onBlurAC} from "../../Reducer/helperReducer";
 
 
+type OptionsType = {
+    id: number
+    value: string
+}
+
 export const AddOperationForm = () => {
     const stateHelper = useAppSelector(state=> state.helper)
     const statusBtn = stateHelper.statusAddBtn
     const dispatch: Dispatch = useAppDispatch()
-
 
     const [newItem, setNewItem] = useState<OperationsType>({
         id: v1(),
@@ -25,7 +29,6 @@ export const AddOperationForm = () => {
         description: '',
         category: ''
     })
-
     const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
 
     const options = [
@@ -33,17 +36,27 @@ export const AddOperationForm = () => {
         {id: 2, value: 'outcome'}
     ]
     const onClickHandler = () => {
-        // Рома, сделай диспатч
-        dispatch(addOperationAC(newItem))
-        setNewItem({
-            id: v1(),
-            date: '',
-            name: '',
-            value: 0,
-            type: '',
-            description: '',
-            category: ''
-        })
+        console.log('ClickSend')
+        console.log(newItem)
+        if(newItem.type === ''){
+            alert("Error! type = ''")
+        }else if(newItem.name === ''){
+            alert("Error! name = ''")
+        }else if(newItem.date === ''){
+            alert("Error! date = ''")
+        }else{
+            dispatch(addOperationAC(newItem))
+            setNewItem({
+                id: v1(),
+                date: '',
+                name: '',
+                value: 0,
+                type: '',
+                description: '',
+                category: ''
+            })
+        }
+
     }
 
     const formDownClick = ()=> {

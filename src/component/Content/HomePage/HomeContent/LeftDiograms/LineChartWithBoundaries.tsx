@@ -14,72 +14,14 @@ type DataType = {
 export const LineChartWithBoundaries = () => {
     const chartRef = useRef<HTMLCanvasElement>(null); // Используем useRef с типом элемента
     const state = useAppSelector(state => state.allState)
+    console.log(state)
     const stateOutcome = state.filter(el => el.type === 'outcome')
-    // let arr: Array<number[]> = [[], [], [], [], [], [], [], [], [], [], [], []]
-    // // console.log(arr[0])
-    // for (let i = 0; i < stateOutcome.length; i++) {
-    //     let month = stateOutcome[i].date.split("-")[1]
-    //     switch (month) {
-    //         case '01': {
-    //             arr[0].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '02': {
-    //             arr[1].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '03': {
-    //             arr[2].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '04': {
-    //             arr[3].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '05': {
-    //             arr[4].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '06': {
-    //             arr[5].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '07': {
-    //             arr[6].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '08': {
-    //             arr[7].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '09': {
-    //             arr[8].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '10': {
-    //             arr[9].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '11': {
-    //             arr[10].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //         case '12': {
-    //             arr[11].push(stateOutcome[i].value)
-    //             break
-    //         }
-    //     }
-    // }
-    // let arr2 = []
-    // for (let i = 0; i < arr.length; i++) {
-    //     arr2.push(arr[i].reduce((acc, el) => acc + el, 0))
-    // }
 
 
     const arr: Array<number[]> = Array.from({length: 12}, () => []);
     stateOutcome.forEach(({date, value}) => {
         const month = Number(date.split("-")[1]) - 1;
-        console.log(month)
+        // console.log(month)
         arr[month].push(value);
     });
     const arr2 = arr.map(subarr => subarr.reduce((acc, el) => acc + el, 0));
@@ -89,10 +31,6 @@ export const LineChartWithBoundaries = () => {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         values: arr2
     }
-
-    console.log(arr)
-    // const filteredApril = state.filter(operation =>
-    //     operation.date.includes("04")).reduce((acc,el)=> acc + el.value, 0)
 
     useEffect(() => {
         // Проверяем, что элемент canvas существует
