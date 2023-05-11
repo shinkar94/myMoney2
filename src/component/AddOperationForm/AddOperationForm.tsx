@@ -1,40 +1,42 @@
-import React, {ChangeEvent, useState} from 'react';
-import {addOperationAC, OperationsType} from '../../Reducer/allStateReducer';
+import React, {useState} from 'react';
+import {addOperationAC} from '../../Reducer/allStateReducer';
 import {v1} from 'uuid';
 import {SuperInput} from '../common/SuperInput';
 import {SuperButton} from '../common/SuperButton';
-import {SuperSelect} from '../common/SuperSelect';
 import {useAppDispatch, useAppSelector} from "../../Hok/useAppSelector";
 import styled, {css} from "styled-components";
 import {Dispatch} from "redux";
 import {onBlurAC} from "../../Reducer/helperReducer";
 
 
-type OptionsType = {
-    id: number
-    value: string
-}
+export type OperationsTypeObject =
+    {
+        id: string
+        value: string
+        type: string
+        description: string
+        category: string
+        date: string
+        name: string
+    };
 
 export const AddOperationForm = () => {
     const stateHelper = useAppSelector(state=> state.helper)
     const statusBtn = stateHelper.statusAddBtn
     const dispatch: Dispatch = useAppDispatch()
 
-    const [newItem, setNewItem] = useState<OperationsType>({
+    const [newItem, setNewItem] = useState<OperationsTypeObject>({
         id: v1(),
         date: '',
         name: '',
-        value: 0,
+        value: '',
         type: '',
         description: '',
         category: ''
     })
+    console.log(newItem)
     const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
 
-    const options = [
-        {id: 1, value: 'income'},
-        {id: 2, value: 'outcome'}
-    ]
     const onClickHandler = () => {
         console.log('ClickSend')
         console.log(newItem)
@@ -50,7 +52,7 @@ export const AddOperationForm = () => {
                 id: v1(),
                 date: '',
                 name: '',
-                value: 0,
+                value: '',
                 type: '',
                 description: '',
                 category: ''
@@ -79,7 +81,23 @@ export const AddOperationForm = () => {
                 <SuperInput placeholder={'Сумма покупки'} property={'value'} newItem={newItem} type={'number'}
                             setNewItem={setNewItem}
                             value={newItem.value}/>
-                <SuperSelect options={options} newItem={newItem} property={'type'} onChangeOption={setNewItem}/>
+
+                <div style={{display: 'flex'}}>
+                    <p>income</p>
+                    <SuperInput setNewItem={setNewItem}
+                                value={'income'}
+                                type={'radio'}
+                                newItem={newItem}
+                                property={'type'} name={'form-check'}
+                                checked={newItem.type === 'income'}/>
+                    <p>outcome</p>
+                    <SuperInput setNewItem={setNewItem}
+                                value={'outcome'}
+                                type={'radio'}
+                                newItem={newItem}
+                                property={'type'} name={'form-check'}
+                                checked={newItem.type === 'outcome'}/>
+                </div>
 
                 <SuperInput placeholder={'Описание'} property={'description'} newItem={newItem} type={'text'}
                             setNewItem={setNewItem}

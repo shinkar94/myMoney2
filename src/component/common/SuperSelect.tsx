@@ -29,7 +29,6 @@ export const SuperSelect: React.FC<SuperSelectPropsType> = (props) => {
 
     return (
         <select onChange={onChangeCallback}>
-            <option value=''></option>
             {mappedOptions}
         </select>
     )

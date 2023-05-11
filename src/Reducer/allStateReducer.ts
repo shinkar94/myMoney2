@@ -1,5 +1,6 @@
 import React from 'react';
 import {v1} from "uuid";
+import {OperationsTypeObject} from "../component/AddOperationForm/AddOperationForm";
 
 
 export type OperationsType =
@@ -67,7 +68,8 @@ const initialState: OperationsType[] = [
 export const allStateReducer = (state: OperationsType[] = initialState, action: ActionType): OperationsType[] => {
     switch (action.type) {
         case "ADD-OPERATION": {
-            return [...state, action.newOperation]
+            let newOperation = {...action.newOperation, value: Number(action.newOperation.value)}
+            return [...state, newOperation]
         }
         case "SORT-DATE": {
             if (action.payload.value === 'up') {
@@ -106,7 +108,7 @@ type sortSumACType = ReturnType<typeof sortSumAC>
 
 
 
-export const addOperationAC = (newOperation: OperationsType) => {
+export const addOperationAC = (newOperation: OperationsTypeObject) => {
     return {
         type: 'ADD-OPERATION',
         newOperation
