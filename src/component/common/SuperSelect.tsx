@@ -5,19 +5,20 @@ import React, {
 } from 'react'
 import s from './SuperSelect.module.css'
 import {OperationsType} from "../../Reducer/allStateReducer";
+import {OperationsTypeObject} from "../AddOperationForm/AddOperationForm";
 
 
 type SuperSelectPropsType = {
     options: any[]
-    onChangeOption: (option: any) => void
+    onChangeOption: (option: OperationsTypeObject) => void
     property:string
-    newItem: OperationsType
+    newItem: OperationsTypeObject
 }
 
 export const SuperSelect: React.FC<SuperSelectPropsType> = (props) => {
     const {options, onChangeOption, property,newItem} = props
 
-    const mappedOptions= options.map((o) => (
+    const mappedOptions= options.map((o, index) => (
         <option key={o.id} value={o.value}>
             {o.value}
         </option>

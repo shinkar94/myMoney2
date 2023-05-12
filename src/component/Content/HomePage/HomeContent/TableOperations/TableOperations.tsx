@@ -4,9 +4,12 @@ import styled from "styled-components";
 import filter from "../../../../../img/filter.svg"
 import {useDispatch} from "react-redux";
 import {sortDateAC, sortSumAC} from "../../../../../Reducer/allStateReducer";
+import {CardsReducerType} from "../../../../../Reducer/cardsReducer";
 
 export const TableOperations = () => {
     const state = useAppSelector(state => state.allState)
+    const cardState:CardsReducerType[] = useAppSelector(state => state.wallets)
+    const walletName = cardState.map(el => ({value: el.name}))
     const dispatch = useDispatch()
 
     const [filterType, setFilterType] = useState<string>('')
@@ -35,8 +38,18 @@ export const TableOperations = () => {
                 ? state.filter(el => el.type === 'outcome')
                 : state
     }
-    // вызов этой функции
     let filteredForRender = FilteredState()
+    const FilterWallet = (nameWallet: ChangeEvent<HTMLSelectElement>) =>{
+        console.log(filteredForRender)
+        filteredForRender.filter(el => el.wallet === nameWallet.currentTarget.value)
+        // return (filterType === 'income')
+        //     ? state.filter(el => el.type === 'income')
+        //     : (filterType === 'outcome')
+        //         ? state.filter(el => el.type === 'outcome')
+        //         : state
+    }
+    // вызов этой функции
+
 
     // реализация фильтрации операции по диапазону дат
     const FilteredDate = () => {
@@ -89,10 +102,11 @@ export const TableOperations = () => {
                     </th>
                     <th>
                         <div>
-                            sum
-                            <select onChange={FilterSum}>
-                                <option value={"up"}>up</option>
-                                <option value={"down"}>down</option>
+                            wallet
+                            <select onChange={FilterWallet}>
+                                {
+                                    walletName.map((el, index) => <option key={index} value={el.value}>{el.value}</option>)
+                                }
                             </select>
                         </div>
                     </th>
@@ -113,7 +127,15 @@ export const TableOperations = () => {
                             </button>
                         </div>
                     </th>
-
+                    <th>
+                        <div>
+                            sum
+                            <select onChange={FilterSum}>
+                                <option value={"up"}>up</option>
+                                <option value={"down"}>down</option>
+                            </select>
+                        </div>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -122,9 +144,10 @@ export const TableOperations = () => {
                         <tr key={item.id}>
                             <td>{item.date}</td>
                             <td>{item.name}</td>
-                            <td>{item.value}</td>
+                            <td>{item.wallet}</td>
                             <td>{item.type}</td>
                             <td>{item.category}</td>
+                            <td>{item.value}</td>
                         </tr>
                     )
                 })}

@@ -7,6 +7,10 @@ import {useAppDispatch, useAppSelector} from "../../Hok/useAppSelector";
 import styled, {css} from "styled-components";
 import {Dispatch} from "redux";
 import {onBlurAC} from "../../Reducer/helperReducer";
+import {SuperSelect} from "../common/SuperSelect";
+import {CardsReducerType} from "../../Reducer/cardsReducer";
+
+
 
 
 export type OperationsTypeObject =
@@ -18,6 +22,7 @@ export type OperationsTypeObject =
         category: string
         date: string
         name: string
+        wallet: string
     };
 
 export const AddOperationForm = () => {
@@ -32,14 +37,16 @@ export const AddOperationForm = () => {
         value: '',
         type: '',
         description: '',
-        category: ''
+        category: '',
+        wallet: 'Wallet'
     })
+    console.log('newitem!!!')
     console.log(newItem)
     const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
+    const cardState:CardsReducerType[] = useAppSelector(state => state.wallets)
+    const walletName = cardState.map(el => ({value: el.name}))
 
     const onClickHandler = () => {
-        console.log('ClickSend')
-        console.log(newItem)
         if(newItem.type === ''){
             alert("Error! type = ''")
         }else if(newItem.name === ''){
@@ -55,7 +62,8 @@ export const AddOperationForm = () => {
                 value: '',
                 type: '',
                 description: '',
-                category: ''
+                category: '',
+                wallet: newItem.wallet
             })
         }
 
@@ -64,6 +72,9 @@ export const AddOperationForm = () => {
     const formDownClick = ()=> {
         setCollapsedForm(!collapsedForm)
         dispatch(onBlurAC("addBtn"))
+    }
+    const onChangeOption = (newOption:OperationsTypeObject )=>{
+        setNewItem(newOption)
     }
 
     return (
@@ -81,7 +92,7 @@ export const AddOperationForm = () => {
                 <SuperInput placeholder={'Сумма покупки'} property={'value'} newItem={newItem} type={'number'}
                             setNewItem={setNewItem}
                             value={newItem.value}/>
-
+                <SuperSelect options={walletName} onChangeOption={onChangeOption} property={'wallet'} newItem={newItem}/>
                 <div style={{display: 'flex'}}>
                     <p>income</p>
                     <SuperInput setNewItem={setNewItem}

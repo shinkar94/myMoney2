@@ -12,6 +12,7 @@ export type OperationsType =
         category: string
         date: string
         name: string
+        wallet: string
     };
 
 
@@ -23,7 +24,8 @@ const initialState: OperationsType[] = [
         value: 12500,
         type: "income",
         description: "sdfsdf",
-        category: "auto"
+        category: "auto",
+        wallet: "cash"
     },
     {
         id: v1(),
@@ -32,7 +34,8 @@ const initialState: OperationsType[] = [
         value: 12700,
         type: "outcome",
         description: "sdfsdf",
-        category: "shop"
+        category: "shop",
+        wallet: "cash"
     },
     {
         id: v1(),
@@ -41,7 +44,8 @@ const initialState: OperationsType[] = [
         value: 11700,
         type: "income",
         description: "sdfsdf",
-        category: "shop"
+        category: "shop",
+        wallet: "cash"
     },
     {
         id: v1(),
@@ -50,7 +54,8 @@ const initialState: OperationsType[] = [
         value: 12700,
         type: "outcome",
         description: "sdfsdf",
-        category: "shop"
+        category: "shop",
+        wallet: "cash"
     },
     {
         id: v1(),
@@ -59,7 +64,8 @@ const initialState: OperationsType[] = [
         value: 12700,
         type: "income",
         description: "sdfsdf",
-        category: "shop"
+        category: "shop",
+        wallet: "Wallet"
     },
 
 

@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 
-type CardsReducerType = {
+export type CardsReducerType = {
     name: string
     idCard: string
     idUser: string
