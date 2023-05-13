@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {addOperationAC} from '../../Reducer/allStateReducer';
+import {addOperation} from '../../Reducer/allStateReducer';
 import {v1} from 'uuid';
 import {SuperInput} from '../common/SuperInput';
 import {SuperButton} from '../common/SuperButton';
@@ -9,6 +9,7 @@ import {Dispatch} from "redux";
 import {onBlurAC} from "../../Reducer/helperReducer";
 import {SuperSelect} from "../common/SuperSelect";
 import {CardsReducerType} from "../../Reducer/cardsReducer";
+import {HelperState} from "../../Selectors/Selectors";
 
 
 
@@ -26,7 +27,7 @@ export type OperationsTypeObject =
     };
 
 export const AddOperationForm = () => {
-    const stateHelper = useAppSelector(state=> state.helper)
+    const stateHelper = useAppSelector(HelperState)
     const statusBtn = stateHelper.statusAddBtn
     const dispatch: Dispatch = useAppDispatch()
 
@@ -40,8 +41,8 @@ export const AddOperationForm = () => {
         category: '',
         wallet: 'Wallet'
     })
-    console.log('newitem!!!')
-    console.log(newItem)
+    // console.log('newitem!!!')
+    // console.log(newItem)
     const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
     const cardState:CardsReducerType[] = useAppSelector(state => state.wallets)
     const walletName = cardState.map(el => ({value: el.name}))
@@ -54,7 +55,7 @@ export const AddOperationForm = () => {
         }else if(newItem.date === ''){
             alert("Error! date = ''")
         }else{
-            dispatch(addOperationAC(newItem))
+            dispatch(addOperation(newItem))
             setNewItem({
                 id: v1(),
                 date: '',

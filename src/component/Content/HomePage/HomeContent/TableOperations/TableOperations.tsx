@@ -3,12 +3,13 @@ import {useAppSelector} from "../../../../../Hok/useAppSelector";
 import styled from "styled-components";
 import filter from "../../../../../img/filter.svg"
 import {useDispatch} from "react-redux";
-import {sortDateAC, sortSumAC} from "../../../../../Reducer/allStateReducer";
+// import {sortDateAC, sortSumAC} from "../../../../../Reducer/allStateReducer";
 import {CardsReducerType} from "../../../../../Reducer/cardsReducer";
+import {AllState, WalletSelector} from "../../../../../Selectors/Selectors";
 
 export const TableOperations = () => {
-    const state = useAppSelector(state => state.allState)
-    const cardState:CardsReducerType[] = useAppSelector(state => state.wallets)
+    const state = useAppSelector(AllState)
+    const cardState:CardsReducerType[] = useAppSelector(WalletSelector)
     const walletName = cardState.map(el => ({value: el.name}))
     const dispatch = useDispatch()
 
@@ -20,10 +21,10 @@ export const TableOperations = () => {
     })
 
     const FilterDate = (e: ChangeEvent<HTMLSelectElement>) => {
-        dispatch(sortDateAC(e.currentTarget.value))
+        // dispatch(sortDateAC(e.currentTarget.value))
     }
     const FilterSum = (e: ChangeEvent<HTMLSelectElement>) => {
-        dispatch(sortSumAC(e.currentTarget.value))
+        // dispatch(sortSumAC(e.currentTarget.value))
     }
 
     const OnChangeTypeHandler = (e: ChangeEvent<HTMLSelectElement>) => {

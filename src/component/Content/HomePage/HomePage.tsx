@@ -6,6 +6,7 @@ import {RightDiagrams} from "./HomeContent/RightDiagrams/RightDiagrams";
 import {useAppSelector} from "../../../Hok/useAppSelector";
 import {HomeContent} from "./HomeContent/HomeContent";
 import {TopCard} from "../../TopCard/TopCard";
+import {HelperState} from "../../../Selectors/Selectors";
 
 
 type HomePageType = {
@@ -14,7 +15,7 @@ type HomePageType = {
 }
 
 export const HomePage: React.FC<HomePageType> = ({totalOutcome,totalIncome}) => {
-    const helper = useAppSelector(state=> state.helper)
+    const helper = useAppSelector(HelperState)
     // console.log(helper)
     return (
         <HomePageWrapper>

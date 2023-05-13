@@ -1,14 +1,15 @@
 import './App.css'
 import {Content} from "./component/Content/Content";
-import {useAppDispatch, useAppSelector} from "./Hok/useAppSelector";
+import {useAppSelector} from "./Hok/useAppSelector";
 import {SideBar} from "./component/SideBar/SideBar";
 import styled from "styled-components";
 import {AddOperationForm} from "./component/AddOperationForm/AddOperationForm";
-import {useState} from "react";
+
+import {AllState} from "./Selectors/Selectors";
 
 
 function App() {
-    const state = useAppSelector(state => state.allState)
+    const state = useAppSelector(AllState)
 
     const sum = (type: string) => {
         return state.filter(item =>
