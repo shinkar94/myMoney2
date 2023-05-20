@@ -50,6 +50,7 @@ const TopContainer = styled.div`
 
   .analitic {
     width: 35%;
+    height: 90%;
     overflow-y: auto;
 
     & h3 {

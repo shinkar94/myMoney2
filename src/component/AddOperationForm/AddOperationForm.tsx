@@ -139,7 +139,7 @@ type ModalType = {
 }
 const ModalOperationForm = styled.div<ModalType>`
   position: fixed;
-  top: -184px;
+  top: -198px;
   left: 50%;
   display: flex;
   flex-direction: column;

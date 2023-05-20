@@ -6,6 +6,7 @@ import {cardsReducer} from "../Reducer/cardsReducer";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 
 
+
 export const reducers = combineReducers({
    allState: allStateReducer,
    helper: helperReducer,
