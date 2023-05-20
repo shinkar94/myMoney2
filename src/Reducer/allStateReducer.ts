@@ -1,6 +1,5 @@
-import {v1} from "uuid";
-import {OperationsTypeObject} from "../component/AddOperationForm/AddOperationForm";
-import {createSlice} from "@reduxjs/toolkit";
+import {v1} from 'uuid';
+import {createSlice} from '@reduxjs/toolkit';
 
 
 export type OperationsType =
@@ -58,6 +57,165 @@ const initialState: OperationsType[] = [
         wallet: "cash"
     },
     {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
         id: v1(),
         date: "2023-01-15",
         name: "milk",
