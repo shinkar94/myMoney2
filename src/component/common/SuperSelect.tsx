@@ -1,11 +1,5 @@
-import React, {
-    SelectHTMLAttributes,
-    DetailedHTMLProps,
-    ChangeEvent,
-} from 'react'
-import s from './SuperSelect.module.css'
-import {OperationsType} from "../../Reducer/allStateReducer";
-import {OperationsTypeObject} from "../AddOperationForm/AddOperationForm";
+import React, {ChangeEvent,} from 'react'
+import {OperationsTypeObject} from '../AddOperationForm/AddOperationForm';
 
 
 type SuperSelectPropsType = {
@@ -19,7 +13,7 @@ export const SuperSelect: React.FC<SuperSelectPropsType> = (props) => {
     const {options, onChangeOption, property,newItem} = props
 
     const mappedOptions= options.map((o, index) => (
-        <option key={o.id} value={o.value}>
+        <option key={index} value={o.value}>
             {o.value}
         </option>
     ))

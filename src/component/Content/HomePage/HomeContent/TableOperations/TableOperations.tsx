@@ -1,20 +1,20 @@
 import React, {ChangeEvent, useState} from 'react';
-import {useAppSelector} from "../../../../../Hok/useAppSelector";
-import styled from "styled-components";
-import filter from "../../../../../img/filter.svg"
-import {useDispatch} from "react-redux";
+import {useAppSelector} from '../../../../../Hok/useAppSelector';
+import styled from 'styled-components';
+import filter from '../../../../../img/filter.svg'
+import {useDispatch} from 'react-redux';
 // import {sortDateAC, sortSumAC} from "../../../../../Reducer/allStateReducer";
-import {CardsReducerType} from "../../../../../Reducer/cardsReducer";
-import {AllState, WalletSelector} from "../../../../../Selectors/Selectors";
+import {CardsReducerType} from '../../../../../Reducer/cardsReducer';
+import {AllState, WalletSelector} from '../../../../../Selectors/Selectors';
 
 export const TableOperations = () => {
     const state = useAppSelector(AllState)
-    const cardState:CardsReducerType[] = useAppSelector(WalletSelector)
+    const cardState: CardsReducerType[] = useAppSelector(WalletSelector)
     const walletName = cardState.map(el => ({value: el.name}))
     const dispatch = useDispatch()
 
     const [filterType, setFilterType] = useState<string>('')
-    const [tableMenu, setTableMenu] = useState<boolean>(true)
+    // const [tableMenu, setTableMenu] = useState<boolean>(true)
     const [dateRange, setDateRange] = useState({
         firstDate: '',
         secondDate: ''
@@ -40,7 +40,7 @@ export const TableOperations = () => {
                 : state
     }
     let filteredForRender = FilteredState()
-    const FilterWallet = (nameWallet: ChangeEvent<HTMLSelectElement>) =>{
+    const FilterWallet = (nameWallet: ChangeEvent<HTMLSelectElement>) => {
         console.log(filteredForRender)
         filteredForRender.filter(el => el.wallet === nameWallet.currentTarget.value)
         // return (filterType === 'income')
@@ -70,29 +70,64 @@ export const TableOperations = () => {
 
     return (
         <TableWrapper>
-            {tableMenu
-                ? <div>
-                    <div>начало периода</div>
-                    <input type="date"
-                           onChange={(e) => setDateRange({...dateRange, firstDate: e.currentTarget.value})}/>
-                    <div>конец периода</div>
-                    <input type="date"
-                           onChange={(e) => setDateRange({...dateRange, secondDate: e.currentTarget.value})}/>
-                    <div onClick={() => setTableMenu(!tableMenu)}> . . .</div>
-                </div>
-                :
-                <div>Название таблицы
-                    <div onClick={() => setTableMenu(!tableMenu)}>...</div></div>}
+            {
+                // tableMenu ?
+
+
+                // <div>
+                //     <div>начало периода</div>
+                //     <input type="date"
+                //            onChange={(e) => setDateRange({...dateRange, firstDate: e.currentTarget.value})}/>
+                //     <div>конец периода</div>
+                //     <input type="date"
+                //            onChange={(e) => setDateRange({...dateRange, secondDate: e.currentTarget.value})}/>
+                //     {/*<div onClick={() => setTableMenu(!tableMenu)}> . . .</div>*/}
+                // </div>
+
+
+                // :
+                // <div>Название таблицы
+                //     <div onClick={() => setTableMenu(!tableMenu)}>...</div></div>
+            }
             <Table>
                 <thead>
+                <tr>
+                    <th colSpan={6}>
+                        <div>
+                            <span>начало периода</span>
+                            <input type="date"
+                                   onChange={(e) => setDateRange({
+                                       ...dateRange,
+                                       firstDate: e.currentTarget.value
+                                   })}/>
+                            <span>конец периода</span>
+                            <input type="date"
+                                   onChange={(e) => setDateRange({
+                                       ...dateRange,
+                                       secondDate: e.currentTarget.value
+                                   })}/>
+                        </div>
+                    </th>
+                    {/*<th>начало периода</th>*/}
+                    {/*<th colSpan={2}>*/}
+                    {/*    <input type="date"*/}
+                    {/*           onChange={(e) => setDateRange({...dateRange, firstDate: e.currentTarget.value})}/>*/}
+                    {/*</th>*/}
+                    {/*<th>конец периода</th>*/}
+                    {/*<th colSpan={2}>*/}
+                    {/*    <input type="date"*/}
+                    {/*           onChange={(e) => setDateRange({...dateRange, secondDate: e.currentTarget.value})}/>*/}
+                    {/*</th>*/}
+                </tr>
+
                 <tr>
                     <th>
                         <div>
                             date
 
                             <select onChange={FilterDate}>
-                                <option value={"up"}>up</option>
-                                <option value={"down"}>down</option>
+                                <option value={'up'}>up</option>
+                                <option value={'down'}>down</option>
                             </select>
                         </div>
                     </th>
@@ -106,7 +141,8 @@ export const TableOperations = () => {
                             wallet
                             <select onChange={FilterWallet}>
                                 {
-                                    walletName.map((el, index) => <option key={index} value={el.value}>{el.value}</option>)
+                                    walletName.map((el, index) => <option key={index}
+                                                                          value={el.value}>{el.value}</option>)
                                 }
                             </select>
                         </div>
@@ -115,9 +151,9 @@ export const TableOperations = () => {
                         <div>
                             type
                             <select onChange={OnChangeTypeHandler}>
-                                <option value={"all"}>all</option>
-                                <option value={"income"}>income</option>
-                                <option value={"outcome"}>outcome</option>
+                                <option value={'all'}>all</option>
+                                <option value={'income'}>income</option>
+                                <option value={'outcome'}>outcome</option>
                             </select>
                         </div>
                     </th>
@@ -132,8 +168,8 @@ export const TableOperations = () => {
                         <div>
                             sum
                             <select onChange={FilterSum}>
-                                <option value={"up"}>up</option>
-                                <option value={"down"}>down</option>
+                                <option value={'up'}>up</option>
+                                <option value={'down'}>down</option>
                             </select>
                         </div>
                     </th>
@@ -162,10 +198,9 @@ const TableWrapper = styled.div`
   height: 350px;
   overflow: auto;
   min-width: 60%;
-  border: 2px solid black;
+  border: 1px solid black;
   box-shadow: 2px 2px 10px black;
   border-radius: 10px;
-  padding: 5px;
   background: #39394B;
 `
 
@@ -173,55 +208,143 @@ const Table = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  text-align: center;
+  text-align: left;
+  overflow: hidden;
+  transform: translate(0%, 0%);
 
-  & thead {
+  th,
+  td {
+    padding: 15px;
 
-    position: sticky;
-    top: 0;
-    background: black;
-    color: aliceblue;
+  }
 
-    & tr th {
-      border: 1px solid white;
-
-      & div {
+  thead {
+    tr {
+      div{
         display: flex;
-        justify-content: center;
-        flex-direction: column;
+        justify-content: space-around;
+        flex-direction: row;
+      }
+    }
 
-        & select {
-            // background-image: url(${filter});
-          // background-repeat: no-repeat;
-          // background-position: center;
-          // background-size: 15px;
-          // background-color: transparent;
-          // border: none;
-          // cursor: pointer;
-          appearance: none;
-          background-color: black;
-          color: white;
-          background-image: url(${filter});
-          background-size: 20px;
-          background-repeat: no-repeat;
-          background-position: right;
-          padding: 6px 24px 6px 0;
+    th {
+      background-color: #222131;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      select {
+          // background-image: url(${filter});
+        // background-repeat: no-repeat;
+        // background-position: center;
+        // background-size: 15px;
+        // background-color: transparent;
+        // border: none;
+        // cursor: pointer;
+        appearance: none;
+        background-color: #222131;
+        color: white;
+        background-image: url(${filter});
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: right;
+        padding: 6px 24px 6px 0;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    td {
+      position: relative;
+
+      &:hover {
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -10000px;
+          bottom: -10000px;
+          background-color: rgba(255, 255, 255, 0.2);
+          z-index: -1;
         }
       }
-
     }
-  }
-
-  & tbody tr {
-    height: 60px;
-
-    & td {
-      border-left: 1px solid rgba(0, 0, 0, 0.7);
-      border-right: 1px solid rgba(0, 0, 0, 0.7);
-    }
-
   }
 `
+// const TableWrapper = styled.div`
+//   height: 350px;
+//   overflow: auto;
+//   min-width: 60%;
+//   border: 2px solid black;
+//   box-shadow: 2px 2px 10px black;
+//   border-radius: 10px;
+//   padding: 5px;
+//   background: #39394B;
+// `
+//
+// const Table = styled.table`
+//   width: 100%;
+//   border-collapse: separate;
+//   border-spacing: 0;
+//   text-align: center;
+//
+//    thead {
+//
+//     position: sticky;
+//     top: 0;
+//     background: #222131;
+//     color: aliceblue;
+//
+//      tr th {
+//       border: 1px solid white;
+//
+//        div {
+//         display: flex;
+//         justify-content: center;
+//         flex-direction: column;
+//
+//          select {
+//             // background-image: url(${filter});
+//           // background-repeat: no-repeat;
+//           // background-position: center;
+//           // background-size: 15px;
+//           // background-color: transparent;
+//           // border: none;
+//           // cursor: pointer;
+//           appearance: none;
+//           background-color: #222131;
+//           color: white;
+//           background-image: url(${filter});
+//           background-size: 20px;
+//           background-repeat: no-repeat;
+//           background-position: right;
+//           padding: 6px 24px 6px 0;
+//         }
+//       }
+//
+//     }
+//   }
+//
+//    tbody tr {
+//     height: 60px;
+//
+//      td {
+//       border-left: 1px solid rgba(0, 0, 0, 0.7);
+//       border-right: 1px solid rgba(0, 0, 0, 0.7);
+//     }
+//
+//   }
+// `
 
 
 
