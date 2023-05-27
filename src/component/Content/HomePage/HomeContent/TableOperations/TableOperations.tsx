@@ -222,7 +222,8 @@ const Table = styled.table`
     tr {
       div{
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        gap: 5px;
         flex-direction: row;
       }
     }

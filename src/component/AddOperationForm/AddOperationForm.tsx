@@ -12,8 +12,6 @@ import {CardsReducerType} from "../../Reducer/cardsReducer";
 import {HelperState} from "../../Selectors/Selectors";
 
 
-
-
 export type OperationsTypeObject =
     {
         id: string
@@ -44,17 +42,17 @@ export const AddOperationForm = () => {
     // console.log('newitem!!!')
     // console.log(newItem)
     const [collapsedForm, setCollapsedForm] = useState<boolean>(false)
-    const cardState:CardsReducerType[] = useAppSelector(state => state.wallets)
+    const cardState: CardsReducerType[] = useAppSelector(state => state.wallets)
     const walletName = cardState.map(el => ({value: el.name}))
 
     const onClickHandler = () => {
-        if(newItem.type === ''){
+        if (newItem.type === '') {
             alert("Error! type = ''")
-        }else if(newItem.name === ''){
+        } else if (newItem.name === '') {
             alert("Error! name = ''")
-        }else if(newItem.date === ''){
+        } else if (newItem.date === '') {
             alert("Error! date = ''")
-        }else{
+        } else {
             dispatch(addOperation(newItem))
             setNewItem({
                 id: v1(),
@@ -70,11 +68,11 @@ export const AddOperationForm = () => {
 
     }
 
-    const formDownClick = ()=> {
+    const formDownClick = () => {
         setCollapsedForm(!collapsedForm)
         dispatch(onBlurAC("addBtn"))
     }
-    const onChangeOption = (newOption:OperationsTypeObject )=>{
+    const onChangeOption = (newOption: OperationsTypeObject) => {
         setNewItem(newOption)
     }
 
@@ -82,7 +80,19 @@ export const AddOperationForm = () => {
         <div>
             {/*<input type="text" value={newItem.name} onChange={onChangHandler}/>*/}
             <ModalOperationForm collapsedForm={collapsedForm}>
-
+                <SuperButton
+                    position = {'absolute'}
+                    top={'0'}
+                    right={'0'}
+                    callBack={formDownClick}
+                    name={'X'}
+                    bgColor={'linear-gradient(90deg, #ff3333, #a60000)'}
+                    width={'20%'}
+                    height={'30px'}
+                    color={'white'}
+                    borderRadius={'4px 10px 4px 4px'}
+                    hover={true}
+                />
                 <SuperInput property={'date'} newItem={newItem} type={'date'} setNewItem={setNewItem}
                             value={newItem.date}/>
 
@@ -93,7 +103,8 @@ export const AddOperationForm = () => {
                 <SuperInput placeholder={'Сумма покупки'} property={'value'} newItem={newItem} type={'number'}
                             setNewItem={setNewItem}
                             value={newItem.value}/>
-                <SuperSelect options={walletName} onChangeOption={onChangeOption} property={'wallet'} newItem={newItem}/>
+                <SuperSelect options={walletName} onChangeOption={onChangeOption} property={'wallet'}
+                             newItem={newItem}/>
                 <div style={{display: 'flex'}}>
                     <p>income</p>
                     <SuperInput setNewItem={setNewItem}
@@ -129,7 +140,7 @@ export const AddOperationForm = () => {
                 />
             </ModalOperationForm>
 
-            <BtnAddForm status={statusBtn} onClick={formDownClick} >+</BtnAddForm>
+            <BtnAddForm status={statusBtn} onClick={formDownClick}>+</BtnAddForm>
         </div>
     );
 };
@@ -139,37 +150,38 @@ type ModalType = {
 }
 const ModalOperationForm = styled.div<ModalType>`
   position: fixed;
-  top: -198px;
+  top: -208px;
   left: 50%;
   display: flex;
   flex-direction: column;
   width: 300px;
   transform: translate(-50%, -50%);
   transition: 1s;
-  padding: 20px 10px 10px 10px;
+  padding: 40px 10px 10px 10px;
   background: #39394B;
   border-radius: 10px;
   box-shadow: 0 2px 10px black;
   z-index: 11;
+
   ${props => props.collapsedForm && css`
     top: 50%;
   `}
-  & input, select{
+  & input, select {
     background: #222131;
-    color: rgb(215,215,215);
+    color: rgb(215, 215, 215);
     height: 40px;
     //border: 2px outset black;
     box-shadow: inset 2px 2px black;
     margin-bottom: 2px;
     border-radius: 5px;
-    
-    &::placeholder{
-      color: rgb(215,215,215);
+
+    &::placeholder {
+      color: rgb(215, 215, 215);
     }
   }
 
 `
-const BtnAddForm = styled.button<{status:boolean}>`
+const BtnAddForm = styled.button<{ status: boolean }>`
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -183,10 +195,11 @@ const BtnAddForm = styled.button<{status:boolean}>`
   font-size: 45px;
   transform: rotate(-0deg);
   transition: 0.5s;
+
   ${props => props.status && css`
     transform: rotate(-45deg);
   `}
-  &:hover{
+  &:hover {
     background: radial-gradient(red, rgba(255, 255, 255, 0));
   }
 `
