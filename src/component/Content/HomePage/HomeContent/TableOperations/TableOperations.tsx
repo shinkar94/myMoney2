@@ -3,7 +3,6 @@ import {useAppSelector} from '../../../../../Hok/useAppSelector';
 import styled from 'styled-components';
 import filter from '../../../../../img/filter.svg'
 import {useDispatch} from 'react-redux';
-// import {sortDateAC, sortSumAC} from "../../../../../Reducer/allStateReducer";
 import {CardsReducerType} from '../../../../../Reducer/cardsReducer';
 import {AllState, WalletSelector} from '../../../../../Selectors/Selectors';
 
@@ -19,6 +18,7 @@ export const TableOperations = () => {
         firstDate: '',
         secondDate: ''
     })
+    const [dateSort, setDateSort] = useState<boolean>(false)
 
     const FilterDate = (e: ChangeEvent<HTMLSelectElement>) => {
         // dispatch(sortDateAC(e.currentTarget.value))
@@ -91,89 +91,84 @@ export const TableOperations = () => {
             }
             <Table>
                 <thead>
-                <tr>
-                    <th colSpan={6}>
-                        <div>
-                            <span>начало периода</span>
-                            <input type="date"
-                                   onChange={(e) => setDateRange({
-                                       ...dateRange,
-                                       firstDate: e.currentTarget.value
-                                   })}/>
-                            <span>конец периода</span>
-                            <input type="date"
-                                   onChange={(e) => setDateRange({
-                                       ...dateRange,
-                                       secondDate: e.currentTarget.value
-                                   })}/>
-                        </div>
-                    </th>
-                    {/*<th>начало периода</th>*/}
-                    {/*<th colSpan={2}>*/}
-                    {/*    <input type="date"*/}
-                    {/*           onChange={(e) => setDateRange({...dateRange, firstDate: e.currentTarget.value})}/>*/}
-                    {/*</th>*/}
-                    {/*<th>конец периода</th>*/}
-                    {/*<th colSpan={2}>*/}
-                    {/*    <input type="date"*/}
-                    {/*           onChange={(e) => setDateRange({...dateRange, secondDate: e.currentTarget.value})}/>*/}
-                    {/*</th>*/}
-                </tr>
+                {
+                    dateSort
+                        ?
+                        <tr>
+                            <th colSpan={6}>
+                                <div>
+                                    <span>начало периода</span>
+                                    <input type="date"
+                                           onChange={(e) => setDateRange({
+                                               ...dateRange,
+                                               firstDate: e.currentTarget.value
+                                           })}/>
+                                    <span>конец периода</span>
+                                    <input type="date"
+                                           onChange={(e) => setDateRange({
+                                               ...dateRange,
+                                               secondDate: e.currentTarget.value
+                                           })}/>
+                                    <button onClick={()=> setDateSort(false)}>apply</button>
+                                </div>
+                            </th>
+                        </tr>
+                        :
+                        <tr>
+                            <th>
+                                <div>
+                                    <div onClick={() => setDateSort(true)}>date</div>
 
-                <tr>
-                    <th>
-                        <div>
-                            date
-
-                            <select onChange={FilterDate}>
-                                <option value={'up'}>up</option>
-                                <option value={'down'}>down</option>
-                            </select>
-                        </div>
-                    </th>
-                    <th>
-                        <div>
-                            name
-                        </div>
-                    </th>
-                    <th>
-                        <div>
-                            wallet
-                            <select onChange={FilterWallet}>
-                                {
-                                    walletName.map((el, index) => <option key={index}
-                                                                          value={el.value}>{el.value}</option>)
-                                }
-                            </select>
-                        </div>
-                    </th>
-                    <th>
-                        <div>
-                            type
-                            <select onChange={OnChangeTypeHandler}>
-                                <option value={'all'}>all</option>
-                                <option value={'income'}>income</option>
-                                <option value={'outcome'}>outcome</option>
-                            </select>
-                        </div>
-                    </th>
-                    <th>
-                        <div>
-                            category
-                            <button>
-                            </button>
-                        </div>
-                    </th>
-                    <th>
-                        <div>
-                            sum
-                            <select onChange={FilterSum}>
-                                <option value={'up'}>up</option>
-                                <option value={'down'}>down</option>
-                            </select>
-                        </div>
-                    </th>
-                </tr>
+                                    <select onChange={FilterDate}>
+                                        <option value={'up'}>up</option>
+                                        <option value={'down'}>down</option>
+                                    </select>
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    name
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    wallet
+                                    <select onChange={FilterWallet}>
+                                        {
+                                            walletName.map((el, index) => <option key={index}
+                                                                                  value={el.value}>{el.value}</option>)
+                                        }
+                                    </select>
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    type
+                                    <select onChange={OnChangeTypeHandler}>
+                                        <option value={'all'}>all</option>
+                                        <option value={'income'}>income</option>
+                                        <option value={'outcome'}>outcome</option>
+                                    </select>
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    category
+                                    <button>
+                                    </button>
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    sum
+                                    <select onChange={FilterSum}>
+                                        <option value={'up'}>up</option>
+                                        <option value={'down'}>down</option>
+                                    </select>
+                                </div>
+                            </th>
+                        </tr>
+                }
                 </thead>
                 <tbody>
                 {FilteredDate().map(item => {
@@ -220,7 +215,7 @@ const Table = styled.table`
 
   thead {
     tr {
-      div{
+      div {
         display: flex;
         justify-content: center;
         gap: 5px;
