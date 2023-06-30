@@ -1,7 +1,9 @@
 import React, {FC, useEffect, useRef} from 'react';
-import {OperationsType} from "../../../../../Reducer/allStateReducer";
-import Chart from "chart.js/auto";
-import {useAppSelector} from "../../../../../Hok/useAppSelector";
+import {OperationsType} from '../../../../../Reducer/allStateReducer';
+import Chart from 'chart.js/auto';
+import {useAppSelector} from '../../../../../Hok/useAppSelector';
+import styled from 'styled-components';
+
 
 type RightType = {
     totalOutcome: number
@@ -9,9 +11,9 @@ type RightType = {
 
 export const RightDiagrams: FC<RightType> = ({totalOutcome}) => {
 
-    const state=useAppSelector(state=> state.allState)
+    const state = useAppSelector(state => state.allState)
 
-    const expenseAnalytics: OperationsType[] = state.filter(item => item.type === "outcome")
+    const expenseAnalytics: OperationsType[] = state.filter(item => item.type === 'outcome')
         .reduce((acc: OperationsType[], {category, value, ...rest}) => {
             const categoryIndex = acc.findIndex(
                 (item) => item.category === category
@@ -23,6 +25,7 @@ export const RightDiagrams: FC<RightType> = ({totalOutcome}) => {
             }
             return acc;
         }, []);
+
     const expensePercentages = expenseAnalytics.map((expense) => ({
         category: expense.category,
         percentage: ((expense.value / totalOutcome) * 100).toFixed(2),
@@ -73,6 +76,14 @@ export const RightDiagrams: FC<RightType> = ({totalOutcome}) => {
                         },
                     ],
                 },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                    },
+
+                },
             });
 
             /*Эта функция возвращается из useEffect hook и вызывается при размонтировании компонента. Она уничтожает
@@ -83,13 +94,35 @@ export const RightDiagrams: FC<RightType> = ({totalOutcome}) => {
         }
     }, [expensePercentages]);
 
+
     return (
-        <div  style={{display: "flex",flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-            <h3>Аналитика расходов</h3>
-            {/*{analytics}*/}
-            <div style={{height: "400px"}}>
-                <canvas ref={chartRef}/>
+        <DiagramsWrapper>
+            <div>
+                <h3>Аналитика раходов</h3>
             </div>
-        </div>
+            <Diagram>
+                <canvas ref={chartRef}/>
+            </Diagram>
+        </DiagramsWrapper>
     );
 };
+const DiagramsWrapper = styled.div`
+  padding: 20px;
+
+`
+const Diagram = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+`
+
+
+
+
+
+
+
+
+
+
