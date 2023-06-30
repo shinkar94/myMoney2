@@ -18,7 +18,8 @@ type UserType = {
 }
 
 const initialState = [
-    {name: 'Wallet',idCard: v1(),idUser: v1(),type:'card',currency: 'BYN',nameCard: 'MasterCard', numberCard: '2345-****-****-7888', dateActive: '08/23', sumCard: 1400, user:{name: 'Egor', lastName: 'Belozerov'}},
+    {name: 'Wallet',idCard: v1(),idUser: v1(),type:'card',currency: 'BYN',nameCard: 'MasterCard', numberCard: '2345-****-****-7888',
+        dateActive: '08/23', sumCard: 1400, user:{name: 'Egor', lastName: 'Belozerov'}},
     {name: 'Work Card',idCard: v1(),idUser: v1(),type:'cash',currency: 'USD',nameCard: 'Visa', numberCard: '111-****-****-2288', dateActive: '08/25', sumCard: 1400, user:{name: 'Roman', lastName: 'Shinkarenko'}},
     {name: 'Wallet',idCard: v1(),idUser: v1(),type:'bank',currency: 'RUB',nameCard: 'American_Express', numberCard: '2115-****-****-7822', dateActive: '04/23', sumCard: 1400, user:{name: 'Egor', lastName: 'Belozerov'}}
 ]
