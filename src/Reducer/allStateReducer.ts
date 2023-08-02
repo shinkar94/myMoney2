@@ -1,5 +1,5 @@
-import React from 'react';
-import {v1} from "uuid";
+import {v1} from 'uuid';
+import {createSlice} from '@reduxjs/toolkit';
 
 
 export type OperationsType =
@@ -11,181 +11,307 @@ export type OperationsType =
         category: string
         date: string
         name: string
+        wallet: string
     };
 
 
 const initialState: OperationsType[] = [
     {
         id: v1(),
-        date: "14-04-2023",
+        date: "2023-05-14",
         name: "test",
         value: 12500,
         type: "income",
         description: "sdfsdf",
-        category: "auto"
+        category: "auto",
+        wallet: "cash"
     },
     {
         id: v1(),
-        date: "14-04-2023",
+        date: "2023-04-11",
+        name: "milk",
+        value: 12700,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "cash"
+    },
+    {
+        id: v1(),
+        date: "2023-03-17",
+        name: "milk",
+        value: 11700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "cash"
+    },
+    {
+        id: v1(),
+        date: "2023-01-14",
+        name: "milk",
+        value: 12700,
+        type: "outcome",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "cash"
+    },
+    {
+        id: v1(),
+        date: "2023-01-15",
         name: "milk",
         value: 12700,
         type: "income",
         description: "sdfsdf",
-        category: "shop"
+        category: "shop",
+        wallet: "Wallet"
     },
     {
         id: v1(),
-        date: "14-04-2023",
+        date: "2023-01-15",
         name: "milk",
         value: 12700,
         type: "income",
         description: "sdfsdf",
-        category: "shop"
+        category: "shop",
+        wallet: "Wallet"
     },
     {
         id: v1(),
-        date: "14-01-2023",
-        name: "bread",
-        value: 0,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "shmotki"
+        category: "shop",
+        wallet: "Wallet"
     },
     {
         id: v1(),
-        date: "14-02-2023",
-        name: "bread",
-        value: 600,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "shmotki"
+        category: "shop",
+        wallet: "Wallet"
     },
     {
         id: v1(),
-        date: "14-03-2023",
-        name: "bread",
-        value: 1000,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "shmotki"
+        category: "shop",
+        wallet: "Wallet"
     },
     {
         id: v1(),
-        date: "14-04-2023",
-        name: "ages",
-        value: 600,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
+        category: "shop",
+        wallet: "Wallet"
     },
     {
         id: v1(),
-        date: "14-05-2023",
-        name: "ages",
-        value: 500,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
-    },
-    {
-        id: v1(),
-        date: "14-06-2023",
-        name: "ages",
-        value: 600,
-        type: "outcome",
-        description: "sdfsdf",
-        category: "beer"
+        category: "shop",
+        wallet: "Wallet"
     },{
         id: v1(),
-        date: "14-07-2023",
-        name: "ages",
-        value: 400,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
-    },
-    {
+        category: "shop",
+        wallet: "Wallet"
+    },{
         id: v1(),
-        date: "14-08-2023",
-        name: "ages",
-        value: 300,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
-    },
-    {
+        category: "shop",
+        wallet: "Wallet"
+    },{
         id: v1(),
-        date: "14-09-2023",
-        name: "ages",
-        value: 400,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
-    },
-    {
+        category: "shop",
+        wallet: "Wallet"
+    },{
         id: v1(),
-        date: "14-10-2023",
-        name: "ages",
-        value: 500,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
-    },
-    {
+        category: "shop",
+        wallet: "Wallet"
+    },{
         id: v1(),
-        date: "14-11-2023",
-        name: "ages",
-        value: 600,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
-    },
-    {
+        category: "shop",
+        wallet: "Wallet"
+    },{
         id: v1(),
-        date: "14-12-2023",
-        name: "ages",
-        value: 700,
-        type: "outcome",
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
         description: "sdfsdf",
-        category: "beer"
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
+    },{
+        id: v1(),
+        date: "2023-01-15",
+        name: "milk",
+        value: 12700,
+        type: "income",
+        description: "sdfsdf",
+        category: "shop",
+        wallet: "Wallet"
     },
+
+
 ]
 
-export const allStateReducer = (state: OperationsType[] = initialState, action: ActionType): OperationsType[] => {
-    switch (action.type) {
-        case "ADD-OPERATION": {
-            return [...state, action.newOperation]
-        }
-        default:
+export const slice = createSlice({
+    name: 'allState',
+    initialState,
+    reducers:{
+        addOperation(state, action){
+            let newOperation = {...action.payload, value: Number(action.payload.value)}
+            return [...state, newOperation]
+        },
+        sortDate(state,action){
             return state
-    }
+        }
+    },
+    extraReducers: builder => {}
+})
+export const {addOperation,sortDate} = slice.actions
+export const allStateReducer = slice.reducer
 
-}
-
-type ActionType = addOperationAC
-
-type addOperationAC = ReturnType<typeof addOperationAC>
-// export const addOperationAC = (date:string, name: string, value:number,type: string,description:string,category: string  )=> {
-//     return {
-//         type: 'ADD-OPERATION',
-//         payload: {
-//             newOperation: {
-//                 id: v1(),
-//                 date: date,
-//                 name: name,
-//                 value: value,
-//                 type: type,
-//                 description: description,
-//                 category: category
-//             },
+// export const allStateReducer = (state: OperationsType[] = initialState, action: ActionType): OperationsType[] => {
+//     switch (action.type) {
+//         // case "ADD-OPERATION": {
+//         //     let newOperation = {...action.newOperation, value: Number(action.newOperation.value)}
+//         //     return [...state, newOperation]
+//         // }
+//         case "SORT-DATE": {
+//             if (action.payload.value === 'up') {
+//                 return [...state].sort((a, b) => {
+//                     let newA = new Date(a.date)
+//                     let newB = new Date(b.date)
+//                     return newA.getTime() - newB.getTime()
+//                 })
+//             } else {
+//                 let copyState = [...state]
+//                 return copyState.sort((a, b) => {
+//                     let newA = new Date(a.date)
+//                     let newB = new Date(b.date)
+//                     return newB.getTime() - newA.getTime()
+//                 })
+//             }
 //         }
-//     }as const
+//         case "SORT-SUM": {
+//              if(action.payload.value === 'up'){
+//                return [...state].sort((a, b) => a.value - b.value)
+//         }else {
+//                  return [...state].sort((a, b) => b.value - a.value)
+//              }
+//         }
+//         default:
+//             return state
+//     }
+//
 // }
 
-export const addOperationAC = ( newOperation: OperationsType)=> {
-    return {
-        type: 'ADD-OPERATION',
-        newOperation
+// type ActionType = addOperationACType | sortDateACType | sortSumACType
 
-    }as const
-}
+// type addOperationACType = ReturnType<typeof addOperationAC>
+// type sortDateACType = ReturnType<typeof sortDateAC>
+// type sortSumACType = ReturnType<typeof sortSumAC>
+
+
+
+
+
+// export const addOperationAC = (newOperation: OperationsTypeObject) => {
+//     return {
+//         type: 'ADD-OPERATION',
+//         newOperation
+//
+//     } as const
+// }
+//
+// export const sortDateAC = (value: string) => {
+//     return {
+//         type: 'SORT-DATE',
+//         payload: {
+//             value
+//         }
+//     } as const
+// }
+// export const sortSumAC = (value: string) => {
+//     return {
+//         type: 'SORT-SUM',
+//         payload: {
+//             value
+//         }
+//     } as const
+// }

@@ -34,7 +34,6 @@ const TopContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 10px;
-  //padding: 0 50px;
 
   .block {
     background: #39394B;
@@ -42,6 +41,7 @@ const TopContainer = styled.div`
     border-radius: 10px;
     color: white;
     min-width: 300px;
+    box-shadow: 2px 2px 10px black;
   }
 
   .graf {
@@ -50,6 +50,7 @@ const TopContainer = styled.div`
 
   .analitic {
     width: 35%;
+    height: 90%;
     overflow-y: auto;
 
     & h3 {

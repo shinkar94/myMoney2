@@ -1,41 +1,48 @@
 import './App.css'
 import {Content} from "./component/Content/Content";
-import {useAppDispatch, useAppSelector} from "./Hok/useAppSelector";
+import {useAppSelector} from "./Hok/useAppSelector";
 import {SideBar} from "./component/SideBar/SideBar";
-import styled from "styled-components";
+import styled, {createGlobalStyle, css} from "styled-components";
 import {AddOperationForm} from "./component/AddOperationForm/AddOperationForm";
-import {useState} from "react";
+import {AllState, HelperState} from "./Selectors/Selectors";
+import {HelperType} from "./Reducer/helperReducer";
 
+const GlobalStyle = createGlobalStyle<{ helper: HelperType }>`
+  body {
+  ${({helper})=> (helper.statusBarBtn || helper.statusAddBtn) && css`
+    overflow: hidden;
+  `}
+    
+  }
+`
 
 function App() {
-    const state = useAppSelector(state => state.allState)
-    const [onBlur, setOnBlur] = useState<boolean>(false)
-
+    const helper = useAppSelector(HelperState)
+    const state = useAppSelector(AllState)
     const sum = (type: string) => {
         return state.filter(item =>
             item.type === type).reduce((acc, el) =>
             acc + el.value, 0)
     }
     return (
-        <div className="App">
-            <Wrapper>
-                <SideBar/>
-                <ContentWrapper>
-                    <AddOperationForm />
-                    <Content totalIncome={sum('income')} totalOutcome={sum('outcome')} />
-                </ContentWrapper>
-            </Wrapper>
-        </div>
-    )
+    <div className="App">
+        <GlobalStyle helper={helper}/>
+        <Wrapper>
+            <SideBar/>
+            <ContentWrapper>
+                <AddOperationForm/>
+                <Content totalIncome={sum('income')} totalOutcome={sum('outcome')}/>
+            </ContentWrapper>
+        </Wrapper>
+    </div>
+)
 }
 
 export default App
 
 
-
-
 const Wrapper = styled.div`
-  
+
   height: 100vh;
   background: red;
   display: flex;
